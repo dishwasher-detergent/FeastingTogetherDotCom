@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { createClient } from '@supabase/supabase-js'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { setSession } from '../../store'
 import FeastingLayout from '../../components/Layout/Feasting';
 import Card from '../../components/Card';

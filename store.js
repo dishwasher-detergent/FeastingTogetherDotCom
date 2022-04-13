@@ -23,7 +23,6 @@ export const actionTypes = {
 export const reducer = (state = startingState, action) => {
   switch (action.type) {
     case actionTypes.SESSION:
-      console.log(action)
       return { 
         session: action.value.session,
         connection: action.value.connection 
