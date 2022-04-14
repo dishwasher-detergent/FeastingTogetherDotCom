@@ -18,7 +18,7 @@ const Join = () =>
 		if(name){
 			let supabase = connection;
 			if(!connection){
-				const supabaseUrl = 'https://pmfajerqlbtgdjrrjygc.supabase.co'
+				const supabaseUrl = process.env.REACT_APP_SUPABASE_URL
 				const supabaseKey = process.env.REACT_APP_SUPABASE_KEY
 				supabase = createClient(supabaseUrl, supabaseKey)
 			}
