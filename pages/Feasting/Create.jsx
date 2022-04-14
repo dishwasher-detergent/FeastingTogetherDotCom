@@ -29,7 +29,11 @@ const Create = () =>
 			{
 				return {
 					connection: supabase,
-					session: (resp.error ? resp.error : resp.data)
+					session: (resp.error ? resp.error : {
+						session_id: resp.data.session_id,
+						user_id: resp.data.user_id,
+						creator: true,
+					})
 				}
 			})
 
@@ -41,7 +45,7 @@ const Create = () =>
 
 	return (
 		<FeastingLayout>
-			<Card>
+			<Card step={1}>
 				<>
 					<h1 className='font-bold text-2xl'>Instructions</h1>
 					<ol className='flex flex-col gap-2'>

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import FeastingLayout from '../../components/Layout/Feasting';
 import Card from '../../components/Card';
 import { useRouter } from 'next/router'
@@ -11,6 +11,13 @@ const Define = () =>
 	const [address, setAddress] = useState("");
 	const [price, setPrice] = useState(1);
 	const router = useRouter()
+
+	useEffect(() => {
+		if(!connection) {
+			router.push("/Feasting/Create")
+			return
+		}
+	},[]);
 
 	const setDetails = async () =>
 	{

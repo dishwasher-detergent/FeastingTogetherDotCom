@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: magic;
+    src: url(../public/Letter_Magic.ttf);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&display=swap');
+
+.magic {
+    font-family: "Magic", sans-serif;
+}
+
+* {
+    font-family: 'League Spartan', sans-serif;
+}
