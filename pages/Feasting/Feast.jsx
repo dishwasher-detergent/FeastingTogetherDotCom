@@ -8,8 +8,8 @@ const Feast = () =>
 {
 	const connection = useSelector((state) => state.connection)
 	const session = useSelector((state) => state.session)
-	const [address, setAddress] = useState("");
-	const [price, setPrice] = useState(1);
+	const [lng, setLng] = useState(null);
+	const [lat, setLat] = useState(null);
 	const router = useRouter()
 
 	useEffect(() => {
@@ -18,7 +18,7 @@ const Feast = () =>
 			return
 		}
 
-		// https://api.yelp.com/v3/businesses/search?location=null&latitude=35.5809411&longitude=-97.5578722&radius=40000&price=1,2,3&open_now=1&limit=50
+		// 
 
 		connection.from('session:session_id=eq.' + session.session_id)
 			.on('*', payload =>
@@ -29,6 +29,52 @@ const Feast = () =>
 			})
 			.subscribe()
 	},[]);
+
+	useEffect(() => {
+		console.log('test')
+		connection
+			.from('session')
+			.select("location")
+			.eq('session_id', session.session_id).then((resp) =>
+			{
+				setLat(resp.data[0].location[0])
+				setLng(resp.data[0].location[1])
+			})
+	},[]);
+
+	useEffect(() => {
+		if (lng && lat) {
+			// fetch("https://api.yelp.com/v3/businesses/search?location=null&latitude=" + lat + "&longitude=" + lng + "&radius=40000&price=1,2,3&open_now=1&limit=50")
+			// 	.then(res => res.json())
+			// 	.then(
+			// 		(result) =>
+			// 		{
+			// 			console.log(result)
+			// 		},
+			// 		(error) =>
+			// 		{
+			// 			console.log(error)
+			// 		}
+			// 	)
+
+			fetch("https://api.yelp.com/v3/businesses/search?location=null&latitude=" + lat + "&longitude=" + lng + "&radius=40000&price=1,2,3&open_now=1&limit=50", {
+				method: 'GET',
+				headers: new Headers({
+					'Authorization': 'Bearer ' + "Va_49MytiFc_lyx8t2vq3JKFppky7SALZjqrtrDqKqnH_XxhK6YtOSiJGthBgwhijIqMt7VJUhdmSl8fIvRZqowswOn-i6mLhiTJTzYByKF1v6YQbw1NRzUx-IX6XnYx",
+				})
+			}).then(res => res.json())
+				.then(
+					(result) =>
+					{
+						console.log(result)
+					},
+					(error) =>
+					{
+						console.log(error)
+					}
+				)
+		}
+	},[lat,lng]);
 
 	const setLikes = async (isLiked) =>
 	{
@@ -49,7 +95,7 @@ const Feast = () =>
 		<FeastingLayout>
 			<Card>
 				<div className='w-full h-full bg-slate-600 border border-slate-900 rounded-md'>
-
+					{lat},{lng}
 				</div>
 				<div className='w-full h-full flex flex-col'>
                     <h1 className="flex-none text-2xl font-bold truncate">Testing</h1>
