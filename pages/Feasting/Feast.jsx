@@ -50,7 +50,7 @@ const Feast = () =>
 
 				</div>
 				<div className='w-full h-full flex flex-col'>
-                    <h1 class="flex-none text-2xl font-bold truncate">Testing</h1>
+                    <h1 ClassName="flex-none text-2xl font-bold truncate">Testing</h1>
                     <div className='h-full overflow-y-auto my-4 relative'>
                         <p className='font-bold text-sm sticky top-0 bg-white backdrop-blur-3xl'>Description:</p>
                         <p >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi aliquid ab adipisci pariatur magni iusto, delectus minus? Accusamus accusantium doloribus, aliquam rerum, neque reprehenderit, iure ex cupiditate labore incidunt aperiam!</p>
@@ -64,7 +64,7 @@ const Feast = () =>
 						</button>
 						<button className='button success w-full' onClick={() => setLikes(true)}>
 							Yes Please!
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <svg xmlns="http://www.w3.org/2000/svg" ClassName="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                             </svg>
 						</button>
