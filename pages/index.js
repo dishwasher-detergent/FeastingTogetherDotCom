@@ -1,5 +1,5 @@
 import Link from "next/link";
-import PrimaryLayout from "../components/Layout/primary";
+import PrimaryLayout from "../components/Layout/Primary";
 
 export default function Home() {
   return (
