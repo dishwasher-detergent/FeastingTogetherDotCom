@@ -1,16 +1,28 @@
 import { useSelector } from 'react-redux'
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useRef } from 'react';
 import FeastingLayout from '../../components/Layout/Feasting';
 import Card from '../../components/Card';
 import { useRouter } from 'next/router'
+import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN
 
 const Define = () =>
 {
 	const connection = useSelector((state) => state.connection)
 	const session = useSelector((state) => state.session)
-	const [address, setAddress] = useState("");
 	const [price, setPrice] = useState(1);
+	const [geoController, setGetController] = useState(null)
 	const router = useRouter()
+
+	const mapContainer = useRef(null);
+	const map = useRef(null);
+	const controlContainer = useRef(null);
+	const [lng, setLng] = useState(-70.9);
+	const [lat, setLat] = useState(42.35);
+	const [zoom, setZoom] = useState(9);
 
 	useEffect(() => {
 		if(!connection) {
@@ -19,13 +31,44 @@ const Define = () =>
 		}
 	},[]);
 
+	useEffect(() =>
+	{
+		if (map.current) return; // initialize map only once
+		map.current = new mapboxgl.Map({
+			container: mapContainer.current,
+			style: 'mapbox://styles/mapbox/streets-v11',
+			center: [lng, lat],
+			zoom: zoom
+		});
+
+		const geocoder = new MapboxGeocoder({
+			accessToken: mapboxgl.accessToken,
+			mapboxgl: mapboxgl,
+			limit: 2,
+			countries: "US"
+		});
+
+		geocoder.addTo(controlContainer.current);
+	},[]);
+
+	useEffect(() =>
+	{
+		if (!map.current) return; // wait for map to initialize
+		map.current.on('move', () =>
+		{
+			setLng(map.current.getCenter().lng.toFixed(4));
+			setLat(map.current.getCenter().lat.toFixed(4));
+			setZoom(map.current.getZoom().toFixed(2));
+		});
+	});
+
 	const setDetails = async () =>
 	{
-		if (address && price)
+		if (lng && lat && price)
 		{
 			await connection
 				.from('session')
-				.update({ location: address, price: price })
+				.update({ location: [lat,lng], price: price })
 				.eq('session_id', session.session_id).then((resp) =>
 			{
 				if (!resp.error)
@@ -37,14 +80,15 @@ const Define = () =>
 	return (
 		<FeastingLayout>
 			<Card step={2}>
-				<div className='w-full h-full bg-slate-600 border border-slate-900 rounded-md'>
-
+				<div className='relative w-full h-full bg-gray-600 border border-gray-900 rounded-md overflow-hidden'>
+					<div className='w-full h-full aboslute inset-0' ref={mapContainer}></div>
 				</div>
 				<div className='w-full flex flex-col'>
 					<div className='flex flex-col gap-2 flex-1 w-full'>
 						<div>
 							<label className='pl-2 pb-1 block text-sm font-bold'>Address</label>
-							<input required className="input w-full" placeholder='Name' value={address} onChange={(e) => setAddress(e.target.value)} />
+							{/* <input required className="input w-full" placeholder='Name' value={address} onChange={(e) => setAddress(e.target.value)} /> */}
+							<div ref={controlContainer} id="geocoder" className="geocoder"></div>
 						</div>
 						<div>
 							<label className='pl-2 pb-1 block text-sm font-bold'>Price</label>

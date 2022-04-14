@@ -16,3 +16,7 @@
 * {
     font-family: 'League Spartan', sans-serif;
 }
+
+.geocoder .mapboxgl-ctrl-geocoder {
+    @apply min-w-full shadow-none border border-primary-600;
+}

@@ -18,6 +18,8 @@ const Feast = () =>
 			return
 		}
 
+		// https://api.yelp.com/v3/businesses/search?location=null&latitude=35.5809411&longitude=-97.5578722&radius=40000&price=1,2,3&open_now=1&limit=50
+
 		connection.from('session:session_id=eq.' + session.session_id)
 			.on('*', payload =>
 			{
