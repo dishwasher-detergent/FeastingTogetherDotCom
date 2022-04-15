@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 let store
 
@@ -11,12 +11,14 @@ const startingState = {
     session_id: null,
     user_id: null,
   },
-	connection: null
+	connection: null,
+  results: null
 }
 
 export const actionTypes = {
   SESSION: 'SESSION',
   CONNECTION: 'CONNECTION',
+  RESULTS: 'RESULTS',
 }
 
 // REDUCERS
@@ -24,8 +26,14 @@ export const reducer = (state = startingState, action) => {
   switch (action.type) {
     case actionTypes.SESSION:
       return { 
+        ...state,
         session: action.value.session,
         connection: action.value.connection 
+      }
+    case actionTypes.RESULTS:
+      return { 
+        ...state,
+        results: action.value,
       }
     default:
       return state
@@ -37,11 +45,15 @@ export const setSession = (value) => {
   return { type: actionTypes.SESSION, value: value }
 }
 
-const persistConfig = {
-  key: 'primary',
-  storage,
-  whitelist: ['session','connection'], // place to select which state you want to persist
+export const setResult = (value) => {
+  return { type: actionTypes.RESULTS, value: value }
 }
+
+const persistConfig = {
+  key: 'root',
+  storage: AsyncStorage,
+  whitelist: ['results','connection','session']
+};
 
 const persistedReducer = persistReducer(persistConfig, reducer)
 

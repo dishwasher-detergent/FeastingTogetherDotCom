@@ -13,14 +13,27 @@ const Waiting = () =>
 	const [participants, setParticipants] = useState([]);
 	const [copy, setCopy] = useState(false);
 	const router = useRouter()
-	
+
 	useEffect(() =>
 	{
 		if(!connection) {
 			router.push("/Feasting/Create")
 			return
 		}
-		
+
+		connection
+			.from('session')
+			.select("started")
+			.eq('session_id', session.session_id).then((resp) =>
+			{
+				if(resp.data[0].started)
+				{
+					router.push("/Feasting/Feast")
+				}
+			})
+	}, [])
+
+	useEffect(() => {
 		fetchParticipants()
 		connection.from('participants:session_id=eq.' + session.session_id)
 			.on('*', payload =>
@@ -32,7 +45,8 @@ const Waiting = () =>
 		connection.from('session:session_id=eq.' + session.session_id)
 			.on('*', payload =>
 			{
-				if(payload.new.started) {
+				if (payload.new.started)
+				{
 					router.push('/Feasting/Feast')
 				}
 			})
@@ -86,16 +100,6 @@ const Waiting = () =>
 							)
 						})}
 					</div>
-					{/* <div className="flex flex-row gap-2">
-						<div className="flex flex-col">
-							<p className='text-xs font-bold'>Location</p>
-							<p className='px-2 py1 min-w-[7rem] rounded-md bg-primary-50 border border-primary-300 truncate'>test</p>
-						</div>
-						<div className="flex flex-col">
-							<p className='text-xs font-bold'>Price</p>
-							<p className='px-2 py1 min-w-[7rem] rounded-md bg-primary-50 border border-primary-300'>test</p>
-						</div>
-					</div> */}
 				</>
 				<div className='w-full flex flex-col'>
 					<div className='flex flex-col gap-2 flex-1 w-full'>

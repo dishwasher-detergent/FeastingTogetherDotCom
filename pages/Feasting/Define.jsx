@@ -36,7 +36,7 @@ const Define = () =>
 		if (map.current) return; // initialize map only once
 		map.current = new mapboxgl.Map({
 			container: mapContainer.current,
-			style: 'mapbox://styles/mapbox/streets-v11',
+			style: 'mapbox://styles/laundrysoap/ckc0mkwl64d3n1iqyphg0f8ka',
 			center: [lng, lat],
 			zoom: zoom
 		});
@@ -47,8 +47,7 @@ const Define = () =>
 			limit: 2,
 			countries: "US"
 		});
-
-		geocoder.addTo(controlContainer.current);
+		document.getElementById('geocoder').appendChild(geocoder.onAdd(map.current))
 	},[]);
 
 	useEffect(() =>
