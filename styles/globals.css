@@ -20,3 +20,47 @@
 .geocoder .mapboxgl-ctrl-geocoder {
     @apply min-w-full shadow-none border border-primary-600;
 }
+
+.yelp-stars {
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.yelp-stars.rating0 {
+    background-image: url(../public/YelpStars/regular_0.png);
+}
+
+.yelp-stars.rating1 {
+    background-image: url(../public/YelpStars/regular_1.png);
+}
+
+.yelp-stars.rating1_5 {
+    background-image: url(../public/YelpStars/regular_1_half.png);
+}
+
+.yelp-stars.rating2 {
+    background-image: url(../public/YelpStars/regular_2.png);
+}
+
+.yelp-stars.rating2_5 {
+    background-image: url(../public/YelpStars/regular_2_half.png);
+}
+
+.yelp-stars.rating3 {
+    background-image: url(../public/YelpStars/regular_3.png);
+}
+
+.yelp-stars.rating3_5 {
+    background-image: url(../public/YelpStars/regular_3_half.png);
+}
+
+.yelp-stars.rating4 {
+    background-image: url(../public/YelpStars/regular_4.png);
+}
+
+.yelp-stars.rating4_5 {
+    background-image: url(../public/YelpStars/regular_4_half.png);
+}
+
+.yelp-stars.rating5 {
+    background-image: url(../public/YelpStars/regular_5.png);
+}

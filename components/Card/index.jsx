@@ -6,7 +6,7 @@ const Card = ({ children, step }) =>
 				{children[0]}
 			</div>
 			<div className='flex-none w-full h-2/5 flex flex-row p-4'>
-				<div className='flex-none w-full h-full flex flex-row p-4'>
+				<div className='flex-none w-full h-full flex flex-row'>
 					{step ? <div className='h-full pr-4 flex-none'>
 						<div className='flex items-center justify-center rounded-full h-8 min-w-[2rem] px-1.5 bg-primary-50 text-primary-600 font-bold border border-primary-600'>
 							<p>{step}</p>
