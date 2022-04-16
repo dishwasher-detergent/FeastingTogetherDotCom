@@ -21,6 +21,11 @@
     @apply min-w-full shadow-none border border-primary-600;
 }
 
+.ios-height {
+    @apply h-screen;
+    height: -webkit-fill-available;
+}
+
 .yelp-stars {
     background-position: center;
     background-repeat: no-repeat;
