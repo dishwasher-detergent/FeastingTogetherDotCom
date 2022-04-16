@@ -13,7 +13,7 @@ const Finished = () =>
 	const session = useSelector((state) => state.session)
 	const router = useRouter()
 	const [position, setPosition] = useState(0);
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		if(!connection) {
@@ -39,10 +39,10 @@ const Finished = () =>
 	}
 
 	return (
-<FeastingLayout>
+		<FeastingLayout>
 			<Card>
 				<div className='relative w-full h-full bg-slate-600 border border-slate-900 rounded-md overflow-hidden'>
-					{!loading ? <>
+					{!loading && store_result ? <>
 						<img className='h-full w-full object-center object-cover' src={store_result[position].image_url} />
 						<div className='absolute top-0 w-full py-2 px-3 flex flex-row justify-between'>
 							<div className='flex flex-row gap-1 items-center p-1 rounded-md bg-white/50 backdrop-blur-md'>
@@ -73,7 +73,7 @@ const Finished = () =>
 					</> : <Loading />}
 				</div>
 				<div className='w-full h-full flex flex-col'>
-					{!loading ? <div className='w-full flex-1 flex flex-col gap-2 p-2 overflow-auto'>
+					{!loading && store_result ? <div className='w-full flex-1 flex flex-col gap-2 p-2 overflow-auto'>
 						<ul className='flex-none w-full overflow-hidden flex flex-row flex-nowrap gap-1'>
 							{store_result[position].categories.map((category, index) =>
 							{

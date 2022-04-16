@@ -19,7 +19,7 @@ export default function Home() {
               </Link>
           </div>
         </section>
-        <section id="HowItWorks" className="flex items-center justify-center flex-col pt-10 pb-20 gap-8">
+        {/* <section id="HowItWorks" className="flex items-center justify-center flex-col pt-10 pb-20 gap-8">
           <h2 className="text-2xl font-bold">How It Works.</h2>
           <ul className="w-full flex flex-col lg:flex-row items-center justify-center gap-6 z-10">
             <li>
@@ -57,7 +57,7 @@ export default function Home() {
               </div>
             </li>
           </ul>
-        </section>
+        </section> */}
       </main>
     </PrimaryLayout>
   )

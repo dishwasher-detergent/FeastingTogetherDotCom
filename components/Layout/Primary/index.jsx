@@ -10,7 +10,7 @@ const PrimaryLayout = ({ children }) =>
 				<div className="magic">Feasting Together</div>
 				<div>
 					<ul className="flex flex-row flex-nowrap">
-						<li><a href="#HowItWorks" className="button ghost">How It Works</a></li>
+						{/* <li><a href="#HowItWorks" className="button ghost">How It Works</a></li> */}
 						<li>
 							<Link href="github.com">
 								<a className="button ghost icon">
