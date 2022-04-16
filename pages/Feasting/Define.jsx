@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+import LoadingIcon from '../../components/Loading/Icon';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN
 
@@ -20,9 +21,10 @@ const Define = () =>
 	const mapContainer = useRef(null);
 	const map = useRef(null);
 	const controlContainer = useRef(null);
-	const [lng, setLng] = useState(-70.9);
-	const [lat, setLat] = useState(42.35);
+	const [lng, setLng] = useState(0);
+	const [lat, setLat] = useState(0);
 	const [zoom, setZoom] = useState(9);
+	const [move, setMove] = useState(false);
 
 	useEffect(() => {
 		if(!connection) {
@@ -53,11 +55,16 @@ const Define = () =>
 	useEffect(() =>
 	{
 		if (!map.current) return; // wait for map to initialize
-		map.current.on('move', () =>
+		map.current.on('movestart', () =>
+		{
+			setMove(true)
+		});
+		map.current.on('moveend', () =>
 		{
 			setLng(map.current.getCenter().lng.toFixed(4));
 			setLat(map.current.getCenter().lat.toFixed(4));
 			setZoom(map.current.getZoom().toFixed(2));
+			setMove(false)
 		});
 	});
 
@@ -112,12 +119,16 @@ const Define = () =>
 						</div>
 					</div>
 					<div className='flex items-end justify-end'>
-						<button className='button' onClick={setDetails}>
+						{!move ? <button className='button' onClick={setDetails}>
 							Next
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
 								<path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
 							</svg>
-						</button>
+						</button> :
+						<button className='button' disabled>
+							Finding Location
+							<LoadingIcon />
+						</button>}
 					</div>
 				</div>
 			</Card>

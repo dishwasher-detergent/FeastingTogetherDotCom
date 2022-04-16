@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react';
 import { setSession } from '../../store'
 import FeastingLayout from '../../components/Layout/Feasting';
 import Card from '../../components/Card';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import LoadingIcon from '../../components/Loading/Icon';
+
 
 
 const Create = () =>
@@ -12,10 +14,12 @@ const Create = () =>
 	const connection = useSelector((state) => state.connection)
 	const dispatch = useDispatch()
 	const [name, setName] = useState("");
+	const [loading, setLoading] = useState(false);
 	const router = useRouter()
 
 	const startSession = async () => {
 		if(name){
+			setLoading(true)
 			let supabase = connection;
 			if(!connection){
 				const supabaseUrl = process.env.REACT_APP_SUPABASE_URL
@@ -37,6 +41,7 @@ const Create = () =>
 				}
 			})
 
+			setLoading(false)
 			dispatch(setSession(session))
 
 			router.push('/Feasting/Define')
@@ -73,15 +78,19 @@ const Create = () =>
 					<div className='w-full h-full flex flex-col gap-2'>
 						<div className='flex-1 w-full'>
 							<label className='pl-2 pb-1 block text-sm font-bold'>Name</label>
-							<input required className="input w-full" placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} />
+							<input maxLength={16} required className="input w-full" placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} />
 						</div>
 						<div className='flex items-end justify-end'>
-							<button className='button' onClick={startSession}>
+							{!loading ? <button className='button' onClick={startSession}>
 								Next
 								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
 									<path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
 								</svg>
-							</button>
+							</button> :
+							<button className='button' disabled>
+								Creating Session
+								<LoadingIcon />
+							</button>}
 						</div>
 					</div>
 				</div>
