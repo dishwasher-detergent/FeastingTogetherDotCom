@@ -1,7 +1,7 @@
 const Card = ({ children, step }) =>
 {
 	return (
-		<div className='card max-w-full ios-height w-[30rem] md:h-[44rem] shadow-lg'>
+		<div className='card max-w-full h-full w-[30rem] md:h-[44rem] shadow-lg'>
 			<div className='h-3/5 p-4 flex flex-col items-center justify-center gap-4'>
 				{children[0]}
 			</div>

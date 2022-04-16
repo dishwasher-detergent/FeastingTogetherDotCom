@@ -22,8 +22,8 @@
 }
 
 .ios-height {
-    @apply h-screen;
-    height: -webkit-fill-available;
+    @apply min-h-screen;
+    min-height: -webkit-fill-available;
 }
 
 .yelp-stars {
