@@ -14,7 +14,7 @@ const Define = () =>
 {
 	const connection = useSelector((state) => state.connection)
 	const session = useSelector((state) => state.session)
-	const [price, setPrice] = useState(1);
+	const [price, setPrice] = useState([1]);
 	const [geoController, setGetController] = useState(null)
 	const router = useRouter()
 
@@ -83,6 +83,16 @@ const Define = () =>
 		}
 	}
 
+	const handleCheckboxChange = (event) => {
+		if (event.target.checked) {
+			if (!price.includes(Number(event.target.value))) {
+				setPrice([...price, Number(event.target.value)])
+			}
+		} else {
+			setPrice(price.filter(element => element != event.target.value));
+		}
+	  }
+
 	return (
 		<FeastingLayout>
 			<Card step={2}>
@@ -97,23 +107,23 @@ const Define = () =>
 							<div ref={controlContainer} id="geocoder" className="geocoder"></div>
 						</div>
 						<div>
-							<label className='pl-2 pb-1 block text-sm font-bold'>Price</label>
+							<label className='pl-2 pb-1 block text-sm font-bold'>Location</label>
 							<div className='flex justify-between py-2 px-4 rounded-md bg-slate-50 border border-slate-300 font-bold'>
 								<label className='flex items-center justify-center gap-2'>
 									$
-									<input type="radio" required className="radio" placeholder='1' value={1} onChange={(e) => setPrice(e.target.value)} checked={price == 1} />
+									<input type="checkbox" required className="checkbox" placeholder='1' value={1} onChange={handleCheckboxChange} checked={price.includes(1)}/>
 								</label>
 								<label className='flex items-center justify-center gap-2'>
 									$$
-									<input type="radio" required className="radio" placeholder='2' value={2} onChange={(e) => setPrice(e.target.value)} checked={price == 2} />
+									<input type="checkbox" required className="checkbox" placeholder='2' value={2} onChange={handleCheckboxChange} checked={price.includes(2)}/>
 								</label>
 								<label className='flex items-center justify-center gap-2'>
 									$$$
-									<input type="radio" required className="radio" placeholder='3' value={3} onChange={(e) => setPrice(e.target.value)} checked={price == 3} />
+									<input type="checkbox" required className="checkbox" placeholder='3' value={3} onChange={handleCheckboxChange} checked={price.includes(3)}/>
 								</label>
 								<label className='flex items-center justify-center gap-2'>
 									$$$$
-									<input type="radio" required className="radio" placeholder='4' value={4} onChange={(e) => setPrice(e.target.value)} checked={price == 4} />
+									<input type="checkbox" required className="checkbox" placeholder='4' value={4} onChange={handleCheckboxChange} checked={price.includes(4)}/>
 								</label>
 							</div>
 						</div>

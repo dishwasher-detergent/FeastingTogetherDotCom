@@ -15,6 +15,7 @@ const Feast = () =>
 	const session = useSelector((state) => state.session)
 	const [lng, setLng] = useState(null);
 	const [lat, setLat] = useState(null);
+	const [price, setPrice] = useState(null);
 	const [results, setResults] = useState(null);
 	const [position, setPosition] = useState(0);
 	const router = useRouter()
@@ -38,11 +39,15 @@ const Feast = () =>
 	useEffect(() => {
 		connection
 			.from('session')
-			.select("location")
+			.select("*")
 			.eq('session_id', session.session_id).then((resp) =>
 			{
 				setLat(resp.data[0].location[0])
 				setLng(resp.data[0].location[1])
+				
+				let price = resp.data[0].price.replace('[','')
+				price = price.replace(']','')
+				setPrice(price)
 			})
 	},[]);
 
@@ -54,7 +59,7 @@ const Feast = () =>
 		}
 
 		const apiKey = process.env.REACT_APP_YELP_KEY
-		if (!results && lat && lng) {
+		if (!results && lat && lng && price) {
 			fetch("/api/hello", {
 				method: "POST",
 				headers: {
@@ -63,17 +68,16 @@ const Feast = () =>
 				body: JSON.stringify({
 					lat: lat,
 					lng: lng,
+					price: price,
 					apiKey: apiKey
 				})
 		})
 			.then(res => res.json())
 			.then((result) =>
 				{
+					console.log(result);
 					dispatch(setResult(result.businesses))
 					setResults(result.businesses)
-				},
-				(error) => {
-					console.error(error)
 				}
 			)
 

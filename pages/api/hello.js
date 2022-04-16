@@ -1,6 +1,8 @@
 export default function handler(req, res) {
   let apiKey = req.body.apiKey
-  fetch("https://api.yelp.com/v3/businesses/search?location=null&latitude=" + req.body.lat + "&longitude=" + req.body.lng + "&radius=40000&price=1,2,3&open_now=1&limit=50", {
+
+
+  fetch("https://api.yelp.com/v3/businesses/search?location=null&latitude=" + req.body.lat + "&longitude=" + req.body.lng + "&radius=20000&price="+req.body.price+"&open_now=1&limit=50", {
       method: 'GET',
       headers: new Headers({
         'Access-Control-Allow-Origin': '*',
