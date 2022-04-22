@@ -68,21 +68,6 @@ const Define = () =>
 		});
 	});
 
-	const setDetails = async () =>
-	{
-		if (lng && lat && price)
-		{
-			await connection
-				.from('session')
-				.update({ location: [lat,lng], price: price })
-				.eq('session_id', session.session_id).then((resp) =>
-			{
-				if (!resp.error)
-					router.push('/Feasting/Waiting')
-			})
-		}
-	}
-
 	const handleCheckboxChange = (event) => {
 		if (event.target.checked) {
 			if (!price.includes(Number(event.target.value))) {

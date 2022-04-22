@@ -17,37 +17,6 @@ const Create = () =>
 	const [loading, setLoading] = useState(false);
 	const router = useRouter()
 
-	const startSession = async () => {
-		if(name){
-			setLoading(true)
-			let supabase = connection;
-			if(!connection){
-				const supabaseUrl = process.env.REACT_APP_SUPABASE_URL
-				const supabaseKey = process.env.REACT_APP_SUPABASE_KEY
-				supabase = createClient(supabaseUrl, supabaseKey)
-			}
-
-			const session = await supabase.rpc('CreateSession', {
-				username: name
-			}).then((resp) =>
-			{
-				return {
-					connection: supabase,
-					session: (resp.error ? resp.error : {
-						session_id: resp.data.session_id,
-						user_id: resp.data.user_id,
-						creator: true,
-					})
-				}
-			})
-
-			setLoading(false)
-			dispatch(setSession(session))
-
-			router.push('/Feasting/Define')
-		}
-	}
-
 	return (
 		<FeastingLayout>
 			<Card step={1}>
