@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { CardContent } from '../../components/Card';
+import CardContent from '../Card';
 
 const Waiting = ({ childFunc }) =>
 {
@@ -53,6 +53,20 @@ const Waiting = ({ childFunc }) =>
 			.subscribe()
 	}, [])
 
+	useEffect(() =>
+	{
+		childFunc.current = StartSession
+	}, [])
+
+	const StartSession = async () =>
+	{
+		console.log('test')
+		await connection
+			.from('session')
+			.update({ started: true })
+			.eq('session_id', session.session_id)
+	}
+
 	const FetchParticipants = async () =>
 	{
 		await connection
@@ -62,23 +76,8 @@ const Waiting = ({ childFunc }) =>
 			.eq('left', false).then((resp) =>
 			{
 				if (!resp.error)
-					setParticipants(resp.data)
+					return setParticipants(resp.data)
 			})
-	}
-
-	useEffect(() =>
-	{
-		childFunc.current = StartSession
-	}, [])
-
-	const StartSession = async () =>
-	{
-		await connection
-			.from('session')
-			.update({ started: true })
-			.eq('session_id', session.session_id)
-
-		return true;
 	}
 
 	const copyText = () =>
