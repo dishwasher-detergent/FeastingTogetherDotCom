@@ -45,10 +45,11 @@ const Wizard = ({ children, childFunc }) =>
 		console.log(router)
 		if(router.query.stage) {
 			let stage = children.findIndex(child => child.type.name === router.query.stage)
-			if(stage !== -1) {
+			if(stage == -1) {
 				setStageIndex(stage)
 			}
 			console.log(stage)
+			console.log(children)
 			console.log(router)
 		}
 	}, []);
