@@ -24,8 +24,7 @@ const Define = ({childFunc, loading = null}) =>
 	const controlContainer = useRef(null);
 	const [lng, setLng] = useState(sessionLocation.lng ? sessionLocation.lng : 0);
 	const [lat, setLat] = useState(sessionLocation.lat ? sessionLocation.lat : 0);
-	const [zoom, setZoom] = useState(sessionLocation.zoom ? sessionLocation.zoom : 9);
-	const [move, setMove] = useState(false);
+	const [zoom, setZoom] = useState(sessionLocation.zoom ? sessionLocation.zoom : 5);
 
 	useEffect(() =>
 	{
@@ -56,22 +55,11 @@ const Define = ({childFunc, loading = null}) =>
 	useEffect(() =>
 	{
 		console.log(lat, lng)
-		if (!map.current) return; // wait for map to initialize
-		map.current.on('movestart', () =>
-		{
-			setMove(true)
-		});
-		map.current.on('moveend', () =>
-		{
-			setZoom(map.current.getZoom().toFixed(2));
-			setMove(false)
-		});
-
 		if(!geocoder.current) return;
 		geocoder.current.on('result', (e) =>
 		{
-			setLng(Number(e.result.center[1].toFixed(4)));
-			setLat(Number(e.result.center[0].toFixed(4)));
+			setLng(Number(e.result.center[0].toFixed(2)));
+			setLat(Number(e.result.center[1].toFixed(2)));
 		});
 	});
 
