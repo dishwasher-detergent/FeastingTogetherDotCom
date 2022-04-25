@@ -9,7 +9,7 @@ import { setSessionPrice,setSessionLocation } from '../../store';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN
 
-const Define = ({childFunc}) =>
+const Define = ({childFunc, loading = null}) =>
 {
 	const dispatch = useDispatch()
 	const sessionPrice = useSelector((state) => state.price)
@@ -20,6 +20,7 @@ const Define = ({childFunc}) =>
 
 	const mapContainer = useRef(null);
 	const map = useRef(null);
+	const geocoder = useRef(null);
 	const controlContainer = useRef(null);
 	const [lng, setLng] = useState(sessionLocation.lng ? sessionLocation.lng : 0);
 	const [lat, setLat] = useState(sessionLocation.lat ? sessionLocation.lat : 0);
@@ -33,7 +34,8 @@ const Define = ({childFunc}) =>
 			container: mapContainer.current,
 			style: 'mapbox://styles/laundrysoap/ckc0mkwl64d3n1iqyphg0f8ka',
 			center: [lng, lat],
-			zoom: zoom
+			zoom: zoom,
+			animate: false
 		});
 
 		if(lng && lat){
@@ -42,17 +44,18 @@ const Define = ({childFunc}) =>
 				.addTo(map.current);
 		}
 
-		const geocoder = new MapboxGeocoder({
+		geocoder.current = new MapboxGeocoder({
 			accessToken: mapboxgl.accessToken,
 			mapboxgl: mapboxgl,
 			limit: 2,
-			countries: "US"
+			countries: "US",
 		});
-		document.getElementById('geocoder').appendChild(geocoder.onAdd(map.current))
+		document.getElementById('geocoder').appendChild(geocoder.current.onAdd(map.current))
 	}, []);
 
 	useEffect(() =>
 	{
+		console.log(lat, lng)
 		if (!map.current) return; // wait for map to initialize
 		map.current.on('movestart', () =>
 		{
@@ -60,10 +63,15 @@ const Define = ({childFunc}) =>
 		});
 		map.current.on('moveend', () =>
 		{
-			setLng(map.current.getCenter().lng.toFixed(4));
-			setLat(map.current.getCenter().lat.toFixed(4));
 			setZoom(map.current.getZoom().toFixed(2));
 			setMove(false)
+		});
+
+		if(!geocoder.current) return;
+		geocoder.current.on('result', (e) =>
+		{
+			setLng(Number(e.result.center[1].toFixed(4)));
+			setLat(Number(e.result.center[0].toFixed(4)));
 		});
 	});
 

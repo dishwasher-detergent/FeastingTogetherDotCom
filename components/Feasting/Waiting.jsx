@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import CardContent from '../Card';
 
-const Waiting = ({ childFunc }) =>
+const Waiting = ({ childFunc, loading = null }) =>
 {
 	const connection = useSelector((state) => state.connection)
 	const session = useSelector((state) => state.session)

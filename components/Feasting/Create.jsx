@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js'
 import { setSession } from '../../store'
 
-const Create = ({ childFunc }) =>
+const Create = ({ childFunc, loading = null }) =>
 {
 	const dispatch = useDispatch()
 	const sessionName = useSelector((state) => state.name)

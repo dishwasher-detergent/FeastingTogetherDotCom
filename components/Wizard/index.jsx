@@ -53,9 +53,9 @@ const Wizard = ({ children, childFunc }) =>
 				<div className='w-full h-full' ref={wizard}>
 					{stages[stageIndex]}
 				</div>
-				{session.creator || stageIndex == 0 ? <div className='w-full flex items-center justify-end gap-2 p-2'>
+				{session.creator || stageIndex == 0 && !loading ? <div className='w-full flex items-center justify-end gap-2 p-2'>
 					{(
-						stageIndex > 0 ?
+						stageIndex > 1 ?
 							<button className='button ghost' onClick={prevClick} disabled={loading}>
 								Previous
 							</button>
@@ -78,13 +78,13 @@ const Wizard = ({ children, childFunc }) =>
 								</svg>
 							</button>
 					)}
-				</div> : 
-				<div className='w-full flex items-center justify-end gap-2 p-2'>
+				</div> : null }
+				{!session.creator && stageIndex > 0 && !loading ? <div className='w-full flex items-center justify-end gap-2 p-2'>
 					<button className='button' onClick={nextClick} disabled={true}>
 						Waiting
 						<LoadingIcon />
 					</button>
-				</div>}
+				</div> : null}
 			</div>
 		</FeastingLayout>
 	)
