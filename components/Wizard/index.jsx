@@ -42,9 +42,14 @@ const Wizard = ({ children, childFunc }) =>
 	};
 
 	useEffect(() => { 
+		console.log(router)
 		if(router.query.stage) {
 			let stage = children.findIndex(child => child.type.name === router.query.stage)
-			setStageIndex(stage)
+			if(stage !== -1) {
+				setStageIndex(stage)
+			}
+			console.log(stage)
+			console.log(router)
 		}
 	}, []);
 
