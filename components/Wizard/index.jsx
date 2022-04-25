@@ -1,9 +1,12 @@
 import React, { useState, useEffect, createRef, useRef } from 'react';
 import { useRouter } from 'next/router'
+import { useSelector } from 'react-redux'
 import FeastingLayout from '../Layout/Feasting';
+import LoadingIcon from '../Loading/Icon';
 
 const Wizard = ({ children, childFunc }) =>
 {
+	const session = useSelector((state) => state.session)
 	const [stageIndex, setStageIndex] = useState(0)
 	const [stages] = useState(React.Children.toArray(children))
 	const handleOnClick = e => () => setStageIndex(e);
@@ -27,7 +30,7 @@ const Wizard = ({ children, childFunc }) =>
 		setLoading(true)
 		await childFunc[stageIndex].current();
 		setLoading(false)
-		router.push("/Feasting/Feast")
+		router.push("/Feasting/Together")
 	}
 
 	const prevClick = () =>
@@ -38,13 +41,20 @@ const Wizard = ({ children, childFunc }) =>
 		}
 	};
 
+	useEffect(() => { 
+		if(router.query.stage) {
+			let stage = children.findIndex(child => child.type.name === router.query.stage)
+			setStageIndex(stage)
+		}
+	}, []);
+
 	return (
 		<FeastingLayout>
 			<div className='card max-w-full h-full w-[30rem] md:h-[44rem] shadow-lg'>
 				<div className='w-full h-full' ref={wizard}>
 					{stages[stageIndex]}
 				</div>
-				<div className='w-full flex items-center justify-end gap-2 p-2'>
+				{session.creator || stageIndex == 0 ? <div className='w-full flex items-center justify-end gap-2 p-2'>
 					{(
 						stageIndex > 0 ?
 							<button className='button ghost' onClick={prevClick} disabled={loading}>
@@ -69,7 +79,13 @@ const Wizard = ({ children, childFunc }) =>
 								</svg>
 							</button>
 					)}
-				</div>
+				</div> : 
+				<div className='w-full flex items-center justify-end gap-2 p-2'>
+					<button className='button' onClick={nextClick} disabled={true}>
+						Waiting
+						<LoadingIcon />
+					</button>
+				</div>}
 			</div>
 		</FeastingLayout>
 	)

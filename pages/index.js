@@ -14,7 +14,7 @@ export default function Home() {
               <Link href={'/Feasting/Join'}>
                 <a className="button ghost lg">Join Your Friends</a>
               </Link>
-              <Link href={'/Feasting/Create'}>
+              <Link href={'/Feasting/'}>
                 <a className="button lg">Create Your Own Feast</a>
               </Link>
           </div>

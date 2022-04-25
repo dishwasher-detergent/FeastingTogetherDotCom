@@ -10,6 +10,8 @@ const Waiting = ({ childFunc }) =>
 	const session = useSelector((state) => state.session)
 	const [participants, setParticipants] = useState([]);
 	const [copy, setCopy] = useState(false);
+	const [RTSConn, setRTSConn] = useState(false);
+	const [RTPTConn, setRTPTConn] = useState(false);
 	const router = useRouter()
 
 	useEffect(() =>
@@ -26,7 +28,7 @@ const Waiting = ({ childFunc }) =>
 				}
 				if (resp.data[0].started)
 				{
-					router.push("/Feasting/Feast")
+					router.push("/Feasting/Together")
 					return
 				}
 			})
@@ -35,22 +37,27 @@ const Waiting = ({ childFunc }) =>
 	useEffect(() =>
 	{
 		FetchParticipants()
-		connection.from('participants:session_id=eq.' + session.session_id)
+		const PTConn = connection.from('participants:session_id=eq.' + session.session_id)
 			.on('*', payload =>
 			{
 				FetchParticipants()
 			})
 			.subscribe()
 
-		connection.from('session:session_id=eq.' + session.session_id)
+		setRTPTConn(PTConn)
+
+		const SConn = connection.from('session:session_id=eq.' + session.session_id)
 			.on('*', payload =>
 			{
 				if (payload.new.started)
 				{
-					router.push('/Feasting/Feast')
+					connection.removeAllSubscriptions()
+					router.push('/Feasting/Together')
 				}
 			})
 			.subscribe()
+
+		setRTSConn(SConn)
 	}, [])
 
 	useEffect(() =>
@@ -60,7 +67,6 @@ const Waiting = ({ childFunc }) =>
 
 	const StartSession = async () =>
 	{
-		console.log('test')
 		await connection
 			.from('session')
 			.update({ started: true })
