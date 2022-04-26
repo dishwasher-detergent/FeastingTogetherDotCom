@@ -36,7 +36,7 @@ const PrimaryLayout = ({ children }) =>
 						</PrimaryNav>
 						{children}
 					</div>
-					<canvas id="canvas" className="absolute inset-0 opacity-30" />
+					<canvas id="canvas" className="absolute inset-0 opacity-20" />
 				</div>
 			</div>
 		</>
