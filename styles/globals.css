@@ -69,3 +69,15 @@
 .yelp-stars.rating5 {
     background-image: url(../public/YelpStars/regular_5.png);
 }
+
+canvas#canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: rotate(0deg) scale(1.5) translateY(0%);
+    --gradient-color-1: #dd887e;
+    --gradient-color-2: #f9dc7d;
+    --gradient-color-3: #2173cb;
+    --gradient-color-4: #91556c;
+    --gradient-speed: 0.000018;
+}
