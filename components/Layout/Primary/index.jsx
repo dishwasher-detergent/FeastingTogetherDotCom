@@ -16,7 +16,7 @@ const PrimaryLayout = ({ children }) =>
 			<Script 
 				src="https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.js" 
 				strategy="beforeInteractive"/>
-			<div className="w-screen ios-height h-1 md:h-screen flex items-center justify-center p-4 md:p-8 bg-slate-50">
+			<div className="w-screen ios-height h-screen flex items-center justify-center p-4 md:p-8 bg-slate-50">
 				<div className="relative h-full w-full flex flex-col rounded-xl bg-white border border-slate-300 overflow-hidden">
 					<div className="z-10">
 						<PrimaryNav>
