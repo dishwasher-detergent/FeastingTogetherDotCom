@@ -19,7 +19,6 @@ const Feast = () =>
 	const [results, setResults] = useState(null);
 	const [position, setPosition] = useState(0);
 	const [finished, setFinished] = useState(false);
-	const [RTConnection, setRTConnection] = useState(null);
 	const router = useRouter()
 
 	useEffect(() => {
@@ -70,14 +69,13 @@ const Feast = () =>
 					dispatch(setResult(result.businesses))
 					setResults(result.businesses)
 
-					const conn = connection.from('session:session_id=eq.' + session.session_id)
+					connection.from('session:session_id=eq.' + session.session_id)
 						.on('*', payload => {
 							if (payload.new.finished) {
 								fetchParticipants(result.businesses)
 							}
 						})
 						.subscribe()
-					setRTConnection(conn)
 				}
 			)
 		}
@@ -86,10 +84,12 @@ const Feast = () =>
 	const setLikes = async (isLiked) =>
 	{
         const rest = results[position].name;
+		const restid = results[position].id;
 
         await connection
-        .rpc('Feasting', {
+        .rpc('Feasting_Updated', {
             rest: rest, 
+			restid: restid, 
             sessionid: session.session_id, 
             userid: session.user_id, 
             isliked: isLiked 
@@ -108,13 +108,13 @@ const Feast = () =>
 		setFinished(true)
 		await connection
 			.from('session')
-			.select('winner')
+			.select('winner_id')
 			.eq('session_id', session.session_id)
 			.eq('finished', true).then((resp) =>
 			{
 				if (!resp.error)
 				{
-					let index = rests.findIndex(x => x.name === resp.data[0].winner);
+					let index = rests.findIndex(x => x.id === resp.data[0].winner_id);
 					setPosition(index)
 				}
 			})
