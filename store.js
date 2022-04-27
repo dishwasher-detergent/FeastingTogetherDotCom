@@ -11,6 +11,13 @@ const startingState = {
     session_id: null,
     user_id: null,
   },
+  name: null,
+  location: {
+    lat: null,
+    lng: null,
+    zoom: null,
+  },
+  price: null,
 	connection: null,
   results: null
 }
@@ -19,6 +26,9 @@ export const actionTypes = {
   SESSION: 'SESSION',
   CONNECTION: 'CONNECTION',
   RESULTS: 'RESULTS',
+  NAME: 'NAME',
+  PRICE: 'PRICE',
+  LOCATION: 'LOCATION',
 }
 
 // REDUCERS
@@ -35,6 +45,21 @@ export const reducer = (state = startingState, action) => {
         ...state,
         results: action.value,
       }
+    case actionTypes.NAME:
+      return { 
+        ...state,
+        name: action.value,
+      }
+    case actionTypes.PRICE:
+      return { 
+        ...state,
+        price: action.value,
+      }
+    case actionTypes.LOCATION:
+      return { 
+        ...state,
+        location: action.value,
+      }
     default:
       return state
   }
@@ -47,6 +72,18 @@ export const setSession = (value) => {
 
 export const setResult = (value) => {
   return { type: actionTypes.RESULTS, value: value }
+}
+
+export const setSessionName = (value) => {
+  return { type: actionTypes.NAME, value: value }
+}
+
+export const setSessionPrice = (value) => {
+  return { type: actionTypes.PRICE, value: value }
+}
+
+export const setSessionLocation = (value) => {
+  return { type: actionTypes.LOCATION, value: value }
 }
 
 const persistConfig = {
