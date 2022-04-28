@@ -54,7 +54,6 @@ const Define = ({childFunc, loading = null}) =>
 
 	useEffect(() =>
 	{
-		console.log(lat, lng)
 		if(!geocoder.current) return;
 		geocoder.current.on('result', (e) =>
 		{
@@ -64,11 +63,22 @@ const Define = ({childFunc, loading = null}) =>
 	});
 
 	const SetDetails = async () =>
-	{		
-		await connection
+	{	
+		if(!lat || !lng || !price) return false;
+
+		const details = await connection
 			.from('session')
 			.update({ location: [lat, lng], price: price })
 			.eq('session_id', session.session_id)
+			.then((resp) =>
+			{
+				if(!resp.error){
+					return true;
+				}
+			})
+
+		if(details) return true;
+		else return false;
 	}
 
 	const handleCheckboxChange = (event) =>

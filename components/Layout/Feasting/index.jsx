@@ -1,9 +1,13 @@
+import Div100vh from 'react-div-100vh'
+
 const FeastingLayout = ({ children }) =>
 {
 	return (
-		<main className="w-full ios-height h-1 md:h-screen flex flex-col items-center justify-center bg-slate-50">
-			{children}
-		</main>
+		<Div100vh>
+			<main className="w-full h-full flex flex-col items-center justify-center bg-slate-50">
+				{children}
+			</main>
+		</Div100vh>
 	)
 }
 

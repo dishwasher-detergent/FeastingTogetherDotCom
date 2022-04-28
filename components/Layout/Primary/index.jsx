@@ -2,6 +2,7 @@ import PrimaryNav from "./Nav";
 import Link from 'next/link'
 import Script from "next/script";
 import { useEffect } from "react";
+import Div100vh from 'react-div-100vh'
 
 const PrimaryLayout = ({ children }) =>
 {
@@ -12,11 +13,11 @@ const PrimaryLayout = ({ children }) =>
 	},[])
 
 	return (
-		<>
+		<Div100vh>
 			<Script 
 				src="https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.js" 
 				strategy="beforeInteractive"/>
-			<div className="w-screen ios-height h-1 md:h-screen flex items-center justify-center md:p-8 bg-slate-50">
+			<div className="h-full w-full flex items-center justify-center md:p-8 bg-slate-50">
 				<div className="relative h-full w-full flex flex-col md:rounded-xl bg-white md:border border-slate-300 overflow-hidden">
 					<div className="z-10 w-full h-full overflow-y-auto">
 						<PrimaryNav>
@@ -39,7 +40,7 @@ const PrimaryLayout = ({ children }) =>
 					<canvas id="canvas" className="absolute inset-0 opacity-20" />
 				</div>
 			</div>
-		</>
+		</Div100vh>
 	)
 }
 

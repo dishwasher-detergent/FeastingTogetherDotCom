@@ -125,9 +125,11 @@ const Feast = () =>
 		<FeastingLayout>
 			<div className='card max-w-full h-full w-[30rem] md:h-[44rem] shadow-lg'>
 				<CardContent>
-					<div className='relative w-full h-full bg-slate-600 border border-slate-900 rounded-md overflow-hidden'>
+					<div className='relative w-full h-full bg-slate-600 border border-slate-900 rounded-lg '>
 						{results ? <>
-							<img className='h-full w-full object-center object-cover' src={results[position].image_url} />
+							<div className='w-full h-full rounded-lg overflow-hidden'>
+								<img className='h-full w-full object-center object-cover' src={results[position].image_url} />
+							</div>
 							<div className='absolute top-0 w-full py-2 px-3 flex flex-row justify-between'>
 								<div className='flex flex-row gap-1 items-center p-1 rounded-md bg-white/50 backdrop-blur-md'>
 									<div className={'yelp-stars w-28 h-6 rating' + results[position].rating.toString().replace(".","_")}></div>
@@ -145,18 +147,22 @@ const Feast = () =>
 									</svg>
 								</div>
 							</div>
+							<div className='absolute w-full h-10 -bottom-5 flex items-center justify-center'>
+								{finished ? <p className='success text-2xl font-semibold px-8 badge succes'>
+									<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+										<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+									</svg>
+									Winner!
+									<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+										<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+									</svg>
+								</p>
+								: <p className='bg-slate-900 text-white font-semibold px-8 badge succes'>Invite Code: {session.session_id}</p>}
+							</div>
 						</> : <Loading />}
 					</div>
 					<div className='w-full h-full flex flex-col'>
-						{results ? <div className='w-full flex-1 flex flex-col gap-2 p-2 overflow-auto'>
-							<ul className='flex-none w-full overflow-hidden flex flex-row flex-nowrap gap-1'>
-								{results[position].categories.map((category, index) =>
-								{
-									return (
-										<div className='badge sm' key={index}>{category.title}</div>
-									)
-								})}
-							</ul>
+						{results ? <div className='w-full flex-1 flex flex-col gap-2 p-2 pt-0 overflow-auto'>
 							<div className="w-full flex-none text-3xl font-bold truncate flex flex-row flex-nowrap items-center gap-1">
 								<h1 className='truncate'>{results[position].name}</h1>
 								<Link href={results[position].url}>
@@ -166,8 +172,15 @@ const Feast = () =>
 										</svg>
 									</a>
 								</Link>
-
 							</div>
+							<ul className='flex-none w-full overflow-x-auto flex flex-row flex-nowrap gap-1 pb-2'>
+								{results[position].categories.map((category, index) =>
+								{
+									return (
+										<div className='badge sm flex-none' key={index}>{category.title}</div>
+									)
+								})}
+							</ul>
 							<ul className='h-full overflow-y-auto relative space-y-2'>
 								<li className='flex flex-row gap-2 items-center'>
 									<p className='font-bold'>Price</p>
@@ -196,13 +209,13 @@ const Feast = () =>
 							</ul>
 						</div> : <Loading />}
 						{!finished ? <div className='button_group flex-none'>
-							<button className='button emergency w-full' onClick={() => setLikes(false)}>
+							<button className='button lg emergency w-full' onClick={() => setLikes(false)}>
 								No Thanks!
 								<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
 									<path strokeLinecap="round" strokeLinejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
 								</svg>
 							</button>
-							<button className='button success w-full' onClick={() => setLikes(true)}>
+							<button className='button lg success w-full' onClick={() => setLikes(true)}>
 								Yes Please!
 								<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
 									<path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />

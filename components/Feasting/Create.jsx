@@ -26,6 +26,8 @@ const Create = ({ childFunc, loading = null }) =>
 
 	const CreateSession = async () =>
 	{
+		if(!name) return false;
+
 		let supabase = connection;
 		if (!connection)
 		{
@@ -56,8 +58,9 @@ const Create = ({ childFunc, loading = null }) =>
 
 		if(session) {
 			dispatch(setSession(session))
-		} else {	
-			return session
+			return true;
+		} else {
+			return false;
 		}
 	}
 
