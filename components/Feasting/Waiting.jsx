@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import CardContent from '../Card';
 import QRCode from "react-qr-code";
+import Loading from '../Loading';
 
 const Waiting = ({ childFunc, loading = null }) =>
 {
@@ -101,7 +102,8 @@ const Waiting = ({ childFunc, loading = null }) =>
 				<>
 					<p className='font-bold text-sm'>{participants.length} {participants.length == 1 ? "Person" : "People"} Waiting</p>
 					<div className='w-full h-full p-2 overflow-y-auto bg-slate-50 border border-slate-300 rounded-md'>
-						{participants.map((participant, index) =>
+						{participants.length > 0 ?
+						participants.map((participant, index) =>
 						{
 							return (
 								<div className={'flex items-center gap-2 w-full px-3 py-1 rounded-md ' + (participant.creator ? 'bg-amber-300' : null)} key={index}>
@@ -114,7 +116,7 @@ const Waiting = ({ childFunc, loading = null }) =>
 									<p className='text-lg'>{participant.user}</p>
 								</div>
 							)
-						})}
+						}): <Loading />}
 					</div>
 				</>
 				<div className='w-full flex flex-row items-start justify-center gap-4'>
