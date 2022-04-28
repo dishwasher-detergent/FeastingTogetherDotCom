@@ -19,10 +19,9 @@ const Wizard = ({ children, childFunc }) =>
 	{
 		if (stageIndex < stages.length - 1)
 		{
-			setLoading(true)
-			await childFunc[stageIndex].current();
-			setLoading(false)
-			setStageIndex(prev => (prev + 1));
+			if(await childFunc[stageIndex].current()){
+				setStageIndex(prev => (prev + 1));
+			}
 		}
 	};
 
