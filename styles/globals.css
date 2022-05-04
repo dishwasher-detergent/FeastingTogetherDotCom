@@ -99,3 +99,7 @@ canvas#canvas {
         --gradient-color-4: #91556c;
     }
 }
+
+.session_id {
+    letter-spacing: 1.7rem;
+}
