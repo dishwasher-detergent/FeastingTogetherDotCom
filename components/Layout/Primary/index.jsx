@@ -18,10 +18,15 @@ const PrimaryLayout = ({ children }) =>
 				src="https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.js" 
 				strategy="beforeInteractive"/>
 			<div className="h-full w-full flex items-center justify-center md:p-8 bg-slate-50 dark:bg-slate-900 dark:text-white">
-				<div className="relative h-full w-full flex flex-col md:rounded-xl bg-white md:border border-slate-300 overflow-hidden dark:border-slate-800">
+				<div className="relative h-full w-full flex flex-col md:rounded-xl bg-white md:border border-slate-300 overflow-hidden dark:bg-slate-900 dark:border-slate-800">
 					<div className="z-10 w-full h-full overflow-y-auto">
 						<PrimaryNav>
-							<div className="magic">Feasting Together</div>
+							<div className="flex flex-row items-center gap-4">
+								<div>
+									<img src="/Branding/Logo.png" alt="Feasting Together Logo" className="h-10 w-10" />
+								</div>
+								<div className="magic">Feasting Together</div>
+							</div>
 							<div>
 								<ul className="flex flex-row flex-nowrap">
 									{/* <li><a href="#HowItWorks" className="button ghost">How It Works</a></li> */}
@@ -37,7 +42,7 @@ const PrimaryLayout = ({ children }) =>
 						</PrimaryNav>
 						{children}
 					</div>
-					<canvas id="canvas" className="absolute inset-0 opacity-30 dark:opacity-80" />
+					<canvas id="canvas" className="absolute inset-0 opacity-30" />
 				</div>
 			</div>
 		</Div100vh>
