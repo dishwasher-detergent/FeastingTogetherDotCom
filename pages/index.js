@@ -4,7 +4,7 @@ import PrimaryLayout from "../components/Layout/Primary";
 export default function Home() {
   return (
     <PrimaryLayout>
-      <main className="p-6 w-full max-w-7xl mx-auto text-gray-900">
+      <main className="p-6 w-full max-w-7xl mx-auto text-gray-900 dark:text-slate-50">
         <section className="mt-12 py-8 md:py-24 rounded-md">
           <div className="flex flex-col items-center justify-center pb-12 md:pb-24">
             <h1 className="magic pb-12 text-6xl md:text-8xl lg:text-9xl font-bold">Feasting<br />Together</h1>

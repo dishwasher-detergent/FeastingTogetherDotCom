@@ -128,7 +128,7 @@ const Define = ({childFunc, loading = null}) =>
 					</div>
 					<div>
 						<label className='pl-2 pb-1 block text-sm font-bold'>Location</label>
-						<div className='flex justify-between py-2 px-4 rounded-md bg-slate-50 border border-slate-300 font-bold'>
+						<div className='flex justify-between py-2 px-4 rounded-md bg-slate-50 border border-slate-300 font-bold dark:bg-slate-800 dark:border-slate-900'>
 							<label className='flex items-center justify-center gap-2'>
 								$
 								<input type="checkbox" required className="checkbox" placeholder='1' value={1} onChange={handleCheckboxChange} checked={price.includes(1)} />

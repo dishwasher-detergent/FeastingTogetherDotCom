@@ -17,8 +17,8 @@ const PrimaryLayout = ({ children }) =>
 			<Script 
 				src="https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.js" 
 				strategy="beforeInteractive"/>
-			<div className="h-full w-full flex items-center justify-center md:p-8 bg-slate-50">
-				<div className="relative h-full w-full flex flex-col md:rounded-xl bg-white md:border border-slate-300 overflow-hidden">
+			<div className="h-full w-full flex items-center justify-center md:p-8 bg-slate-50 dark:bg-slate-900 dark:text-white">
+				<div className="relative h-full w-full flex flex-col md:rounded-xl bg-white md:border border-slate-300 overflow-hidden dark:border-slate-800">
 					<div className="z-10 w-full h-full overflow-y-auto">
 						<PrimaryNav>
 							<div className="magic">Feasting Together</div>
@@ -37,7 +37,7 @@ const PrimaryLayout = ({ children }) =>
 						</PrimaryNav>
 						{children}
 					</div>
-					<canvas id="canvas" className="absolute inset-0 opacity-20" />
+					<canvas id="canvas" className="absolute inset-0 opacity-30 dark:opacity-80" />
 				</div>
 			</div>
 		</Div100vh>
