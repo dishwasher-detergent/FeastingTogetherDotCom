@@ -60,9 +60,9 @@ const Join = () =>
 
 	return (
 		<FeastingLayout>
-			<div className='card max-w-full h-full w-[30rem] md:h-[44rem] shadow-lg'>
+			<div className='text-white card max-w-full h-full w-[30rem] md:h-[44rem] shadow-lg dark:bg-slate-700 dark:border-slate-800'>
 				<CardContent>
-					<>
+					<div className="w-full h-full flex flex-col items-center justify-center gap-2 bg-slate-50 border border-slate-300 rounded-md dark:bg-slate-800 dark:border-slate-900">
 						<h1 className='font-bold text-2xl'>Instructions</h1>
 						<ol className='flex flex-col gap-2'>
 							<li className='h-10 flex flex-row items-center gap-4'>
@@ -84,16 +84,30 @@ const Join = () =>
 								<p className='text-lg'>Start Feasting!</p>
 							</li>
 						</ol>
-					</>
+					</div>
 					<div className='w-full flex flex-col'>
-						<div className='w-full h-full flex flex-col gap-2'>
-							<div className='flex-1 w-full'>
-								<label className='pl-2 pb-1 block text-sm font-bold'>Name</label>
-								<input maxLength={16} required className="input w-full" placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} />
-							</div>
-							<div className='flex-1 w-full'>
-								<label className='pl-2 pb-1 block text-sm font-bold'>Session ID</label>
-								<input maxLength={6} required className="input w-full tracking-widest uppercase" placeholder='123456' value={sessionID} onChange={(e) => setSessionID(e.target.value)} />
+						<div className='w-full h-full flex flex-col'>
+							<div className='flex-1 flex flex-col gap-6'>
+								<div className='w-full'>
+									<label className='pl-2 pb-1 block text-sm font-bold'>Name</label>
+									<input maxLength={16} required className="input w-full" placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} />
+								</div>
+								<div className='w-full'>
+									<label className='pl-2 pb-1 block text-sm font-bold'>Session ID</label>
+									<div className='w-full h-16 flex items-center justify-center relative'>
+										<div className='h-full max-w-full w-4/5 grid grid-cols-6 gap-2'>
+											<div className='flex items-center justify-center text-5xl font-bold bg-slate-50 border border-slate-300 rounded-md dark:bg-slate-800 dark:border-slate-900'>{sessionID[0] ? sessionID[0] : '0'}</div>
+											<div className='flex items-center justify-center text-5xl font-bold bg-slate-50 border border-slate-300 rounded-md dark:bg-slate-800 dark:border-slate-900'>{sessionID[1] ? sessionID[1] : '0'}</div>
+											<div className='flex items-center justify-center text-5xl font-bold bg-slate-50 border border-slate-300 rounded-md dark:bg-slate-800 dark:border-slate-900'>{sessionID[2] ? sessionID[2] : '0'}</div>
+											<div className='flex items-center justify-center text-5xl font-bold bg-slate-50 border border-slate-300 rounded-md dark:bg-slate-800 dark:border-slate-900'>{sessionID[3] ? sessionID[3] : '0'}</div>
+											<div className='flex items-center justify-center text-5xl font-bold bg-slate-50 border border-slate-300 rounded-md dark:bg-slate-800 dark:border-slate-900'>{sessionID[4] ? sessionID[4] : '0'}</div>
+											<div className='flex items-center justify-center text-5xl font-bold bg-slate-50 border border-slate-300 rounded-md dark:bg-slate-800 dark:border-slate-900'>{sessionID[5] ? sessionID[5] : '0'}</div>
+										</div>
+										<input maxLength={6} required className="absolute h-full max-w-full w-4/5 px-2.5 bg-transparent border-none text-transparent" value={sessionID} onChange={(e) => setSessionID(e.target.value)} />
+									</div>
+									{/* <input maxLength={6} required className="input w-full tracking-widest uppercase" placeholder='123456' value={sessionID} onChange={(e) => setSessionID(e.target.value)} /> */}
+
+								</div>
 							</div>
 							<div className='flex items-end justify-end'>
 

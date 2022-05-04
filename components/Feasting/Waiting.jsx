@@ -101,12 +101,12 @@ const Waiting = ({ childFunc, loading = null }) =>
 		<CardContent>
 				<>
 					<p className='font-bold text-sm'>{participants.length} {participants.length == 1 ? "Person" : "People"} Waiting</p>
-					<div className='w-full h-full p-2 overflow-y-auto bg-slate-50 border border-slate-300 rounded-md'>
+					<div className='w-full h-full p-2 overflow-y-auto bg-slate-50 border border-slate-300 rounded-md dark:bg-slate-800 dark:border-slate-900'>
 						{participants.length > 0 ?
 						participants.map((participant, index) =>
 						{
 							return (
-								<div className={'flex items-center gap-2 w-full px-3 py-1 rounded-md ' + (participant.creator ? 'bg-amber-300' : null)} key={index}>
+								<div className={'flex items-center gap-2 w-full px-3 py-1 rounded-md ' + (participant.creator ? 'bg-amber-300 text-amber-900' : null)} key={index}>
 									{participant.creator ?
 										<div data-content="Creator" className='tooltip right'>
 											<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-amber-100 bg-amber-600 rounded-full" viewBox="0 0 20 20" fill="currentColor">
@@ -119,16 +119,10 @@ const Waiting = ({ childFunc, loading = null }) =>
 						}): <Loading />}
 					</div>
 				</>
-				<div className='w-full flex flex-row items-start justify-center gap-4'>
-					<div className='flex gap-2 flex-col items-center justify-cente'>
-						<div className='card p-2 bg-slate-900'>
-							<QRCode size="100" bgColor='bg-slate-900' fgColor='#fff' value={window.location.hostname + '/Feasting/Join/' + session.session_id} />
-						</div>
-						<p className='badge font-bold'>Scan Me!</p>
-					</div>
-					<div className='flex flex-col gap-2'>
-						<p>Invite Code</p>
-						<div className='flex items-center'>
+				<div className='w-full flex flex-col items-center justify-start gap-4'>
+					<div className='flex flex-col'>
+						<p className='font-semibold text-xs'>Invite Code</p>
+						<div className='flex dark:gap-2 items-center'>
 							<h1 className='font-bold text-3xl tracking-widest'>{(session.session_id ? session.session_id : "Invalid!")}</h1>
 							<div data-content={!copy ? "Copy!" : "Copied!"} className={'tooltip bottom  ' + (copy ? 'success' : null)}>
 								<CopyToClipboard text={window.location.hostname + '/Feasting/Join/' + session.session_id} onCopy={copyText}>
@@ -139,6 +133,11 @@ const Waiting = ({ childFunc, loading = null }) =>
 									</button>
 								</CopyToClipboard>
 							</div>
+						</div>
+					</div>
+					<div className='flex gap-2 flex-col items-center justify-cente'>
+						<div className='card p-2 bg-slate-900'>
+							<QRCode size="125" bgColor='bg-slate-900' fgColor='#fff' value={window.location.hostname + '/Feasting/Join/' + session.session_id} />
 						</div>
 					</div>
 				</div>

@@ -123,7 +123,7 @@ const Feast = () =>
 
 	return (
 		<FeastingLayout>
-			<div className='card max-w-full h-full w-[30rem] md:h-[44rem] shadow-lg'>
+			<div className='text-white card max-w-full h-full w-[30rem] md:h-[44rem] shadow-lg dark:bg-slate-700 dark:border-slate-800'>
 				<CardContent>
 					<div className='relative w-full h-full bg-slate-600 border border-slate-900 rounded-lg '>
 						{results ? <>
@@ -131,11 +131,11 @@ const Feast = () =>
 								<img className='h-full w-full object-center object-cover' src={results[position].image_url} />
 							</div>
 							<div className='absolute top-0 w-full py-2 px-3 flex flex-row justify-between'>
-								<div className='flex flex-row gap-1 items-center p-1 rounded-md bg-white/50 backdrop-blur-md'>
+								<div className='flex flex-row gap-1 items-center p-1 rounded-md bg-white/50 backdrop-blur-md dark:bg-slate-900/50'>
 									<div className={'yelp-stars w-28 h-6 rating' + results[position].rating.toString().replace(".","_")}></div>
 									<p className='pr-2 text-sm font-bold'>{results[position].review_count} Reviews</p>
 								</div>
-								<div className='py-1 px-2 rounded-md bg-white/50 backdrop-blur-md'>
+								<div className='py-1 px-2 rounded-md bg-white/50 backdrop-blur-md dark:bg-slate-900/50'>
 									<svg className='h-5 w-auto' viewBox="0 0 1000 385" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path d="M806.495 227.151L822.764 223.392C823.106 223.313 823.671 223.183 824.361 222.96C828.85 221.753 832.697 218.849 835.091 214.862C837.485 210.874 838.241 206.113 837.198 201.582C837.175 201.482 837.153 201.388 837.13 201.289C836.596 199.117 835.66 197.065 834.37 195.239C832.547 192.926 830.291 190.991 827.728 189.542C824.711 187.82 821.553 186.358 818.289 185.171L800.452 178.659C790.441 174.937 780.432 171.309 770.328 167.771C763.776 165.439 758.224 163.393 753.4 161.901C752.49 161.62 751.485 161.34 750.669 161.058C744.837 159.271 740.739 158.53 737.272 158.505C734.956 158.42 732.649 158.841 730.511 159.738C728.283 160.699 726.282 162.119 724.639 163.906C723.822 164.835 723.054 165.806 722.337 166.815C721.665 167.843 721.049 168.907 720.491 170.001C719.876 171.174 719.348 172.391 718.911 173.642C715.6 183.428 713.951 193.7 714.032 204.029C714.091 213.368 714.342 225.354 719.475 233.479C720.712 235.564 722.372 237.366 724.348 238.769C728.004 241.294 731.7 241.627 735.544 241.904C741.289 242.316 746.855 240.905 752.403 239.623L806.45 227.135L806.495 227.151Z" fill="#FF1A1A" />
 										<path d="M987.995 140.779C983.553 131.457 977.581 122.947 970.328 115.601C969.39 114.669 968.385 113.806 967.321 113.02C966.339 112.283 965.318 111.598 964.264 110.967C963.18 110.373 962.065 109.837 960.924 109.362C958.668 108.476 956.25 108.077 953.829 108.19C951.513 108.322 949.254 108.956 947.207 110.049C944.105 111.591 940.748 114.07 936.283 118.221C935.666 118.834 934.891 119.525 934.195 120.177C930.511 123.641 926.413 127.911 921.536 132.883C914.002 140.497 906.583 148.152 899.21 155.89L886.017 169.571C883.601 172.071 881.401 174.771 879.441 177.643C877.771 180.07 876.59 182.799 875.963 185.678C875.6 187.886 875.653 190.142 876.12 192.329C876.143 192.429 876.164 192.523 876.187 192.622C877.229 197.154 879.988 201.103 883.883 203.637C887.778 206.172 892.505 207.094 897.068 206.211C897.791 206.106 898.352 205.982 898.693 205.898L969.033 189.646C974.576 188.365 980.202 187.191 985.182 184.3C988.522 182.363 991.699 180.443 993.878 176.569C995.043 174.441 995.748 172.092 995.948 169.675C997.027 160.089 992.021 149.202 987.995 140.779Z" fill="#FF1A1A" />
@@ -163,10 +163,10 @@ const Feast = () =>
 					</div>
 					<div className='w-full h-full flex flex-col'>
 						{results ? <div className='w-full flex-1 flex flex-col gap-2 p-2 pt-0 overflow-auto'>
-							<div className="w-full flex-none text-3xl font-bold truncate flex flex-row flex-nowrap items-center gap-1">
+							<div className="w-full flex-none text-3xl font-bold truncate flex flex-row flex-nowrap items-center gap-2">
 								<h1 className='truncate'>{results[position].name}</h1>
 								<Link href={results[position].url}>
-									<a target="_blank" className='button ghost md icon'>
+									<a target="_blank" className='button ghost sm icon'>
 										<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
 											<path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
 										</svg>
@@ -187,7 +187,7 @@ const Feast = () =>
 									<ul className='flex flex-row'>
 										{[...results[position].price].map((price, index) => {
 											return (
-												<li key={index} className='text-success-700'>
+												<li key={index} className='text-success-700 dark:text-success-500'>
 													<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
 														<path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 													</svg>
