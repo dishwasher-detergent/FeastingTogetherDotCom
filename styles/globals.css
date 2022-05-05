@@ -76,29 +76,23 @@ canvas#canvas {
     height: 100%;
     transform: rotate(0deg) scale(1.5) translateY(0%);
     --gradient-speed: 0.000018;
+    --gradient-color-1: #dd887e;
+    --gradient-color-2: #f9dc7d;
+    --gradient-color-3: #2173cb;
+    --gradient-color-4: #91556c;
 }
 
 @media (prefers-color-scheme: dark) {
-    canvas#canvas {
-        --gradient-color-1: #B44487;
-        --gradient-color-2: #FAD73E;
-        --gradient-color-3: #2B1C76;
-        --gradient-color-4: #444042;
-    }
-
     .button.ghost {
-        @apply bg-primary-50;
+        @apply text-primary-50;
+    }
+
+    .button.ghost:hover {
+        @apply bg-opacity-20 bg-primary-600;
     }
 }
 
-@media (prefers-color-scheme: light) {
-    canvas#canvas {
-        --gradient-color-1: #dd887e;
-        --gradient-color-2: #f9dc7d;
-        --gradient-color-3: #2173cb;
-        --gradient-color-4: #91556c;
-    }
-}
+@media (prefers-color-scheme: light) { }
 
 .session_id {
     letter-spacing: 1.7rem;
