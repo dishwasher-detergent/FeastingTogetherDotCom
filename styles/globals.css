@@ -86,10 +86,6 @@ canvas#canvas {
     .button.ghost {
         @apply text-primary-50;
     }
-
-    .button.ghost:hover {
-        @apply bg-opacity-20 bg-primary-600;
-    }
 }
 
 @media (prefers-color-scheme: light) { }

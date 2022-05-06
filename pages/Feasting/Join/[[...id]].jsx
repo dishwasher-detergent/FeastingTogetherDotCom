@@ -6,6 +6,7 @@ import CardContent from '../../../components/Card';
 import { useRouter } from 'next/router'
 import { setSession } from '../../../store'
 import LoadingIcon from '../../../components/Loading/Icon';
+import Link from 'next/link';
 
 const Join = () =>
 {
@@ -60,7 +61,7 @@ const Join = () =>
 
 	return (
 		<FeastingLayout>
-			<div className='text-white card max-w-full h-full w-[30rem] md:h-[44rem] shadow-lg dark:bg-slate-700 dark:border-slate-800'>
+			<div className='card max-w-full h-full w-[30rem] md:h-[44rem] shadow-lg dark:bg-slate-900 dark:border-slate-900 dark:text-white'>
 				<CardContent>
 					<div className="w-full h-full flex flex-col items-center justify-center gap-2 bg-slate-50 border border-slate-300 rounded-md dark:bg-slate-800 dark:border-slate-900">
 						<h1 className='font-bold text-2xl'>Instructions</h1>
@@ -109,8 +110,12 @@ const Join = () =>
 
 								</div>
 							</div>
-							<div className='flex items-end justify-end'>
-
+							<div className='flex items-end justify-end gap-2'>
+								<Link href="/">
+									<a className='button ghost emergency'>
+										Leave
+									</a>
+								</Link>
 								{!loading ? <button className='button' onClick={startSession}>
 									Next
 									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
