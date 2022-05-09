@@ -19,7 +19,6 @@ const Join = () =>
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
-		console.log(router)
 		if(id)
 			setSessionID(id[0])
 	},[id])
@@ -60,7 +59,7 @@ const Join = () =>
 	}
 
 	return (
-		<FeastingLayout>
+		<FeastingLayout session={sessionID}>
 			<div className='card max-w-full h-full w-[30rem] md:h-[44rem] shadow-lg dark:bg-slate-900 dark:border-slate-900 dark:text-white'>
 				<CardContent>
 					<div className="w-full h-full flex flex-col items-center justify-center gap-2 bg-slate-50 border border-slate-300 rounded-md dark:bg-slate-800 dark:border-slate-900">
