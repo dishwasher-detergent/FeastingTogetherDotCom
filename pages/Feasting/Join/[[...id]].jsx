@@ -63,6 +63,7 @@ const Join = () =>
 		}
 	}
 
+	if(image){
 	return (
 		<FeastingLayout>
 			<Head>
@@ -141,6 +142,7 @@ const Join = () =>
 			</div>
 		</FeastingLayout>
 	)
+	}
 }
 
 export default Join
