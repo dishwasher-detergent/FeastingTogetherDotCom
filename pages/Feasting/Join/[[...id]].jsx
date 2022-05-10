@@ -9,7 +9,16 @@ import LoadingIcon from '../../../components/Loading/Icon';
 import Link from 'next/link';
 import Head from 'next/head';
 
-const Join = () =>
+export function getServerSideProps(context) {
+	console.log(context)
+	return {
+		props: {
+			image: "https://feastingtogether.vercel.app/" + context.query.id + ".png"
+		}
+	}
+}
+
+const Join = ({ image }) =>
 {
 	const router = useRouter() 
 	const {id} = router.query;
@@ -18,13 +27,6 @@ const Join = () =>
 	const [name, setName] = useState("");
     const [sessionID, setSessionID] = useState("");
 	const [loading, setLoading] = useState(false);
-	const [image,setImage] = useState(null);
-
-	useEffect(() => {
-		if(router.isReady){
-			setImage("https://feastingtogether.vercel.app/" + router.query.id + ".png")
-		}
-	} , [router.isReady])
 
 	useEffect(() => {
 		if(id) {
@@ -67,7 +69,6 @@ const Join = () =>
 		}
 	}
 
-	if(image){
 	return (
 		<FeastingLayout>
 			<Head>
@@ -146,7 +147,6 @@ const Join = () =>
 			</div>
 		</FeastingLayout>
 	)
-	}
 }
 
 export default Join
