@@ -10,7 +10,6 @@ import Link from 'next/link';
 import Head from 'next/head';
 
 export function getServerSideProps(context) {
-	console.log(context)
 	return {
 		props: {
 			image: "https://feastingtogether.vercel.app/" + context.query.id + ".png"
