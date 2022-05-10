@@ -11,7 +11,6 @@ import Head from 'next/head';
 
 const Join = () =>
 {
-	let image;
 	const router = useRouter() 
 	const {id} = router.query;
 	const connection = useSelector((state) => state.connection)
@@ -19,8 +18,13 @@ const Join = () =>
 	const [name, setName] = useState("");
     const [sessionID, setSessionID] = useState("");
 	const [loading, setLoading] = useState(false);
+	const [image,setImage] = useState(null);
 
-	image = "https://feastingtogether.vercel.app/" + router.query.id + ".png"
+	useEffect(() => {
+		if(router.isReady){
+			setImage("https://feastingtogether.vercel.app/" + router.query.id + ".png")
+		}
+	} , [router.isReady])
 
 	useEffect(() => {
 		if(id) {
