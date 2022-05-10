@@ -23,9 +23,12 @@ const Join = () =>
 	useEffect(() => {
 		if(id) {
 			setSessionID(id[0])
-			setImage("https://feastingtogether.vercel.app/" + id + ".png")
 		}
 	},[id])
+
+	useEffect(() => {
+		setImage("https://feastingtogether.vercel.app/" + id + ".png")
+	},[]);
 
 	const startSession = async () => {
 		if(name){
