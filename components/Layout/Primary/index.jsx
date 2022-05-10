@@ -1,6 +1,5 @@
 import PrimaryNav from "./Nav";
 import Link from 'next/link'
-import Script from "next/script";
 import { useEffect } from "react";
 import Div100vh from 'react-div-100vh'
 import Head from "next/head";
@@ -22,9 +21,6 @@ const PrimaryLayout = ({ children }) =>
 				<meta property="og:image" content="/Branding/Meta.png" />
 				<meta property="twitter:image" content="/Branding/Meta.png" />
 			</Head>
-			<Script 
-				src="https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.js" 
-				strategy="beforeInteractive"/>
 			<div className="h-full w-full flex items-center justify-center md:p-8 bg-slate-50 dark:bg-slate-900 dark:text-white">
 				<div className="relative h-full w-full flex flex-col md:rounded-xl bg-white md:border border-slate-300 overflow-hidden dark:bg-slate-900 dark:border-slate-800">
 					<div className="z-10 w-full h-full overflow-y-auto">

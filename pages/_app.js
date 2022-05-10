@@ -3,12 +3,16 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import Head from 'next/head'
 import { Provider } from 'react-redux'
 import { useStore } from '../store'
+import Script from "next/script";
 
 function MyApp({ Component, pageProps }) {
   const store = useStore(pageProps.initialReduxState)
 
   return (
     <Provider store={store}>
+			<Script 
+				src="https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.js" 
+				strategy="beforeInteractive"/>
 			<Head>
 				<link rel="apple-touch-icon" sizes="180x180" href="/Branding/apple-touch-icon.png" />
 				<link rel="icon" type="image/png" sizes="32x32" href="/Branding/favicon-32x32.png" />
