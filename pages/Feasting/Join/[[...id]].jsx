@@ -17,11 +17,14 @@ const Join = () =>
 	const dispatch = useDispatch()
 	const [name, setName] = useState("");
     const [sessionID, setSessionID] = useState("");
+	const [image, setImage] = useState("https://feastingtogether.vercel.app/000000.png");
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
-		if(id)
+		if(id) {
 			setSessionID(id[0])
+			setImage("https://feastingtogether.vercel.app/" + id + ".png")
+		}
 	},[id])
 
 	const startSession = async () => {
@@ -62,8 +65,8 @@ const Join = () =>
 	return (
 		<FeastingLayout>
 			<Head>
-				<meta property="og:image" content={"https://feastingtogether.vercel.app/" + sessionID + ".png"} />
-				<meta property="twitter:image" content={"https://feastingtogether.vercel.app/" + sessionID + ".png"} />
+				<meta property="og:image" content={image} />
+				<meta property="twitter:image" content={image} />
 			</Head>
 			<div className='card max-w-full h-full w-[30rem] md:h-[44rem] shadow-lg dark:bg-slate-900 dark:border-slate-900 dark:text-white'>
 				<CardContent>
