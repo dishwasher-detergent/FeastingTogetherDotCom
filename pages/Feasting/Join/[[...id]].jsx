@@ -20,7 +20,9 @@ const Join = () =>
     const [sessionID, setSessionID] = useState("");
 	const [loading, setLoading] = useState(false);
 
-	image = "https://feastingtogether.vercel.app/" + id + ".png"
+	console.log(router.query)
+
+	image = "https://feastingtogether.vercel.app/" + id[0] + ".png"
 
 	useEffect(() => {
 		if(id) {
