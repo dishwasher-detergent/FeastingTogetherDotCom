@@ -131,7 +131,6 @@ const Feast = () =>
 			})
 	}
 
-
 	return (
 		<FeastingLayout>
 			<div className='card max-w-full h-full w-[30rem] md:h-[44rem] shadow-lg dark:bg-slate-900 dark:border-slate-900 dark:text-white'>
@@ -159,7 +158,7 @@ const Feast = () =>
 								</div>
 							</div>
 							<div className='absolute w-full h-10 -bottom-5 flex items-center justify-center'>
-								{!finished ? <p className='warning text-2xl font-semibold badge succes'>
+								{finished ? <p className='warning text-2xl font-semibold badge succes'>
 									🧇 Time To Eat! 🍕
 								</p>
 								: <p className='bg-slate-900 text-white font-semibold px-8 badge succes'>Invite Code: {session.session_id}</p>}
@@ -226,7 +225,8 @@ const Feast = () =>
 									<path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
 								</svg>
 							</button>
-						</div> : null}
+						</div> : 
+						results ? <AddressButton address={results[position].location.display_address} /> : null}
 					</div>
 				</CardContent>
 			</div>
@@ -235,3 +235,17 @@ const Feast = () =>
 }
 
 export default Feast
+
+const AddressButton = ({address}) => {
+	const [joined, setJoined] = useState('');
+
+	useEffect(() => {
+		const new_address = address.join(' ')
+		setJoined(new_address)
+	}, [address])
+	return (
+		<Link href={"https://maps.apple.com/?address=" + joined}>
+			<a className='button lg w-full'>Take me there! 🗺️</a>
+		</Link>
+	)
+}

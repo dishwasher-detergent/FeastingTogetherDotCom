@@ -122,7 +122,7 @@ const Waiting = ({ childFunc, loading = null }) =>
 				<div className='w-full flex flex-row items-center justify-center gap-4'>
 					<div className='flex gap-2 flex-col items-center justify-cente'>
 						<div className='card p-2 bg-slate-900'>
-							<QRCode size="125" bgColor='bg-slate-900' fgColor='#fff' value={window.location.hostname + '/Feasting/Join/' + session.session_id} />
+							<QRCode size={125} bgColor='bg-slate-900' fgColor='#fff' value={window.location.hostname + '/Feasting/Join/' + session.session_id} />
 						</div>
 					</div>
 					<div className='flex flex-col'>
