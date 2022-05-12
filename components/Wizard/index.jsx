@@ -57,7 +57,7 @@ const Wizard = ({ children, childFunc }) =>
 				<div className='w-full h-full' ref={wizard}>
 					{stages[stageIndex]}
 				</div>
-				{session.creator || stageIndex == 0 && !loading ? <div className='w-full flex items-center justify-end gap-2 p-2'>
+				{session.creator || stageIndex == 0 && !loading ? <div className='w-full flex items-center justify-end gap-2 p-4'>
 					{(
 						stageIndex > 1 ?
 							<button className='button ghost' onClick={prevClick} disabled={loading}>
