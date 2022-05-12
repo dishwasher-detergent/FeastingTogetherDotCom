@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useState, useEffect } from 'react';
-import FeastingLayout from '../../components/Layout/Feasting';
-import CardContent from '../../components/Card';
+import { useState, useEffect } from 'react'
+import FeastingLayout from '../../components/Layout/Feasting'
+import CardContent from '../../components/Card'
 import { useRouter } from 'next/router'
-import Link from 'next/link';
-import Loading from '../../components/Loading';
+import Link from 'next/link'
+import Loading from '../../components/Loading'
 import { setResult } from '../../store'
+import JSConfetti from 'js-confetti'
 
 const Feast = () =>
 {
@@ -27,6 +28,16 @@ const Feast = () =>
 			return
 		}
 	},[]);
+
+	useEffect(() => {
+		if(finished){
+			const jsConfetti = new JSConfetti()
+			jsConfetti.addConfetti({
+				emojis: ['🥑', '🥖', '🍔', '🌭', '🍕', '🫔', '🍝','🥡'],
+			})
+			jsConfetti.addConfetti()
+		}
+	},[finished])
 
 	useEffect(() => {
 		connection
