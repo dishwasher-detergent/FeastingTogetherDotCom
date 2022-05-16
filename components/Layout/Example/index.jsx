@@ -23,7 +23,7 @@ const Example = () => {
 	}, [])
 
 	return (
-		<div className="flex-none relative card w-full max-w-[30rem] h-[44rem] shadow-lg dark:bg-slate-900 dark:border-slate-900 dark:text-white">
+		<div className="flex-none relative card w-full max-w-[30rem] h-[44rem] shadow-lg overflow-hidden dark:bg-slate-900 dark:border-slate-900 dark:text-white">
 			<div ref={create} className="flex flex-col w-full h-full absolute z-50 bg-white dark:bg-slate-900">
 				<Create />
 				<div className='w-full flex items-center justify-end gap-2 p-4'>
@@ -172,7 +172,7 @@ const Waiting = () => {
 				</div>
 				<p className='font-bold text-sm'>4 People Waiting</p>
 			</>
-			<div className='w-full flex flex-row items-center justify-center gap-4'>
+			<div className='w-full flex flex-wrap items-center justify-center gap-4'>
 				<div className='flex gap-2 flex-col items-center justify-cente'>
 					<div className='card p-2 bg-slate-900'>
 						<QRCode size={125} bgColor='bg-slate-900' fgColor='#fff' value={'https://feastingtogether.com/Feasting/'} />
