@@ -97,6 +97,10 @@ canvas#canvas {
     .nav_logo {
         background-image: url(../public/Branding/Logo_Light.png);
     }
+
+    .background_gradient {
+        opacity: .6;
+    }
 }
 
 @media (prefers-color-scheme: light) { }
