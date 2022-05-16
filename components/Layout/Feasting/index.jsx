@@ -18,7 +18,7 @@ const FeastingLayout = ({ children, session }) =>
 
 	return (
 		<Div100vh>
-			<main className="w-full h-full flex flex-col items-start justify-center p-2 bg-slate-50 dark:bg-slate-1000">
+			<main className="w-full h-full flex flex-col items-start md:items-center justify-center p-2 bg-slate-50 dark:bg-slate-1000">
 				{children}
 			</main>
 		</Div100vh>
