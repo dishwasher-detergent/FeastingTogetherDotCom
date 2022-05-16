@@ -23,7 +23,7 @@ const Example = () => {
 	}, [])
 
 	return (
-		<div className="flex-none relative card w-[25rem] h-[44rem] md:w-[30rem] md:h-[44rem] shadow-lg dark:bg-slate-900 dark:border-slate-900 dark:text-white">
+		<div className="flex-none relative card w-full max-w-[30rem] h-[44rem] shadow-lg dark:bg-slate-900 dark:border-slate-900 dark:text-white">
 			<div ref={create} className="flex flex-col w-full h-full absolute z-50 bg-white dark:bg-slate-900">
 				<Create />
 				<div className='w-full flex items-center justify-end gap-2 p-4'>
