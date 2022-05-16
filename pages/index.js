@@ -1,12 +1,14 @@
 import Link from "next/link";
 import PrimaryLayout from "../components/Layout/Primary";
 import Example from "../components/Layout/Example";
+import { gsap } from "gsap";
+import { useEffect, useRef } from "react";
 
 export default function Home() {
   return (
     <PrimaryLayout>
-      <main className="p-6 w-full max-w-7xl mx-auto text-gray-900 dark:text-slate-50">
-        <section className="flex flex-col lg:flex-row items-center justify-center">
+      <main className="relative p-6 h-full w-full max-w-7xl mx-auto text-slate-900 dark:text-slate-50 ">
+        <section className="z-20 relative flex flex-col lg:flex-row items-center justify-center">
           <div className="w-full my-16">
             <div className="flex flex-col items-center justify-center pb-12 md:pb-24">
               <h1 className="magic pb-12 text-6xl md:text-7xl lg:text-8xl font-bold">Feasting<br />Together</h1>
@@ -23,6 +25,7 @@ export default function Home() {
           </div>
           <Example />
         </section>
+        <div className="z-10 inset-0 absolute background_gradient"></div>
       </main>
     </PrimaryLayout>
   )

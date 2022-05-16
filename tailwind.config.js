@@ -10,7 +10,7 @@ module.exports = {
       colors: {
         primary: colors.blue,
         slate: {
-          1000: '#060912'
+          1000: '#0b1121'
         }
       }
     },

@@ -100,7 +100,7 @@ const Waiting = ({ childFunc, loading = null }) =>
 	return (
 		<CardContent>
 				<>
-					<div className='w-full h-full p-2 overflow-y-auto bg-slate-50 border border-slate-300 rounded-md dark:bg-slate-800 dark:border-slate-900'>
+					<div className='w-full h-full p-2 overflow-y-auto bg-slate-50 border border-slate-300 rounded-md dark:bg-slate-1000 dark:border-slate-900'>
 						{participants.length > 0 ?
 						participants.map((participant, index) =>
 						{
