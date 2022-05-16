@@ -66,7 +66,7 @@ const Create = ({ childFunc, loading = null }) =>
 
 	return (
 		<CardContent>
-			<div className="w-full h-full flex flex-col items-center justify-center gap-2 bg-slate-50 border border-slate-300 rounded-md dark:bg-slate-1000 dark:border-slate-900">
+			<div className="w-full h-full flex flex-col items-center justify-center gap-2 bg-slate-50 border border-slate-300 rounded-lg dark:bg-slate-1000 dark:border-slate-900">
 				<h1 className='font-bold text-2xl'>Instructions</h1>
 				<ol className='flex flex-col gap-2'>
 					<li className='h-10 flex flex-row items-center gap-4'>

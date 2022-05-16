@@ -100,12 +100,12 @@ const Waiting = ({ childFunc, loading = null }) =>
 	return (
 		<CardContent>
 				<>
-					<div className='w-full h-full p-2 overflow-y-auto bg-slate-50 border border-slate-300 rounded-md dark:bg-slate-1000 dark:border-slate-900'>
+					<div className='w-full h-full p-2 overflow-y-auto bg-slate-50 border border-slate-300 rounded-lg dark:bg-slate-1000 dark:border-slate-900'>
 						{participants.length > 0 ?
 						participants.map((participant, index) =>
 						{
 							return (
-								<div className={'flex items-center gap-2 w-full px-3 py-1 rounded-md ' + (participant.creator ? 'bg-amber-300 text-amber-900' : null)} key={index}>
+								<div className={'flex items-center gap-2 w-full px-3 py-1 rounded-lg ' + (participant.creator ? 'bg-amber-300 text-amber-900' : null)} key={index}>
 									{participant.creator ?
 										<div data-content="Creator" className='tooltip right'>
 											<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-amber-100 bg-amber-600 rounded-full" viewBox="0 0 20 20" fill="currentColor">

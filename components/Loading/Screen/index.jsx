@@ -22,7 +22,7 @@ const LoadingScreen = () => {
 	},[]);
 
 	return (
-		<div ref={loadingScreen} className="max-w-full h-full w-[30rem] md:h-[44rem] flex flex-col rounded-xl bg-white border border-slate-300 overflow-hidden">
+		<div ref={loadingScreen} className="max-w-full h-full w-[30rem] md:h-[44rem] flex flex-col rounded-lg bg-white border border-slate-300 overflow-hidden">
 			<p>test</p>
 		</div>
 	)

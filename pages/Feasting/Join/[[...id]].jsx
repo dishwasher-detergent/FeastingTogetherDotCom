@@ -76,7 +76,7 @@ const Join = ({ image }) =>
 			</Head>
 			<div className='card max-w-full h-full w-[30rem] md:h-[44rem] shadow-lg dark:bg-slate-900 dark:border-slate-900 dark:text-white'>
 				<CardContent>
-					<div className="w-full h-full flex flex-col items-center justify-center gap-2 bg-slate-50 border border-slate-300 rounded-md dark:bg-slate-800 dark:border-slate-900">
+					<div className="w-full h-full flex flex-col items-center justify-center gap-2 bg-slate-50 border border-slate-300 rounded-lg dark:bg-slate-800 dark:border-slate-900">
 						<h1 className='font-bold text-2xl'>Instructions</h1>
 						<ol className='flex flex-col gap-2'>
 							<li className='h-10 flex flex-row items-center gap-4'>
@@ -110,12 +110,12 @@ const Join = ({ image }) =>
 									<label className='pl-2 pb-1 block text-sm font-bold'>Session ID</label>
 									<div className='w-full h-16 flex items-center justify-center relative'>
 										<div className='h-full max-w-full w-4/5 grid grid-cols-6 gap-2'>
-											<div className='flex items-center justify-center text-5xl font-bold bg-slate-50 border border-slate-300 rounded-md dark:bg-slate-800 dark:border-slate-900'>{sessionID[0] ? sessionID[0] : '0'}</div>
-											<div className='flex items-center justify-center text-5xl font-bold bg-slate-50 border border-slate-300 rounded-md dark:bg-slate-800 dark:border-slate-900'>{sessionID[1] ? sessionID[1] : '0'}</div>
-											<div className='flex items-center justify-center text-5xl font-bold bg-slate-50 border border-slate-300 rounded-md dark:bg-slate-800 dark:border-slate-900'>{sessionID[2] ? sessionID[2] : '0'}</div>
-											<div className='flex items-center justify-center text-5xl font-bold bg-slate-50 border border-slate-300 rounded-md dark:bg-slate-800 dark:border-slate-900'>{sessionID[3] ? sessionID[3] : '0'}</div>
-											<div className='flex items-center justify-center text-5xl font-bold bg-slate-50 border border-slate-300 rounded-md dark:bg-slate-800 dark:border-slate-900'>{sessionID[4] ? sessionID[4] : '0'}</div>
-											<div className='flex items-center justify-center text-5xl font-bold bg-slate-50 border border-slate-300 rounded-md dark:bg-slate-800 dark:border-slate-900'>{sessionID[5] ? sessionID[5] : '0'}</div>
+											<div className='flex items-center justify-center text-5xl font-bold bg-slate-50 border border-slate-300 rounded-lg dark:bg-slate-800 dark:border-slate-900'>{sessionID[0] ? sessionID[0] : '0'}</div>
+											<div className='flex items-center justify-center text-5xl font-bold bg-slate-50 border border-slate-300 rounded-lg dark:bg-slate-800 dark:border-slate-900'>{sessionID[1] ? sessionID[1] : '0'}</div>
+											<div className='flex items-center justify-center text-5xl font-bold bg-slate-50 border border-slate-300 rounded-lg dark:bg-slate-800 dark:border-slate-900'>{sessionID[2] ? sessionID[2] : '0'}</div>
+											<div className='flex items-center justify-center text-5xl font-bold bg-slate-50 border border-slate-300 rounded-lg dark:bg-slate-800 dark:border-slate-900'>{sessionID[3] ? sessionID[3] : '0'}</div>
+											<div className='flex items-center justify-center text-5xl font-bold bg-slate-50 border border-slate-300 rounded-lg dark:bg-slate-800 dark:border-slate-900'>{sessionID[4] ? sessionID[4] : '0'}</div>
+											<div className='flex items-center justify-center text-5xl font-bold bg-slate-50 border border-slate-300 rounded-lg dark:bg-slate-800 dark:border-slate-900'>{sessionID[5] ? sessionID[5] : '0'}</div>
 										</div>
 										<input maxLength={6} required className="absolute h-full max-w-full w-4/5 px-2.5 bg-transparent border-none text-transparent" value={sessionID} onChange={(e) => setSessionID(e.target.value)} />
 									</div>
