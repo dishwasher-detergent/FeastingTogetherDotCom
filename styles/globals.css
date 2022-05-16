@@ -113,10 +113,10 @@ canvas#canvas {
     mix-blend-mode: overlay;
 }
 
-.background_gradient {
+/* .background_gradient {
     transform: translate3d(0%, 0%, 0px);
     -webkit-mask-image: radial-gradient(farthest-side at 50% 50%, rgb(0, 0, 0), rgba(0, 0, 0, 0));
     background-image: linear-gradient(90deg, blue, red);
     opacity: 0.4;
     filter: hue-rotate(0deg);
-}
+} */
