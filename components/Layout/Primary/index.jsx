@@ -21,7 +21,7 @@ const PrimaryLayout = ({ children }) =>
 				<meta property="og:image" content="/Branding/Meta.png" />
 				<meta property="twitter:image" content="/Branding/Meta.png" />
 			</Head>
-			<div className="background_repeat relative h-full w-full overflow-y-auto flex flex-col bg-white md:border border-slate-300 overflow-hidden dark:bg-slate-1000 dark:text-slate-50">
+			<div className="background_repeat relative h-full w-full overflow-y-auto flex flex-col md:border border-slate-300 overflow-hidden dark:bg-slate-1000 dark:text-slate-50">
 				<PrimaryNav>
 					<div className="flex flex-row items-center gap-4">
 						<div className="nav_logo h-10 w-10" />
@@ -29,7 +29,6 @@ const PrimaryLayout = ({ children }) =>
 					</div>
 					<div>
 						<ul className="flex flex-row flex-nowrap">
-							{/* <li><a href="#HowItWorks" className="button ghost">How It Works</a></li> */}
 							<li>
 								<Link href="github.com">
 									<a className="button ghost icon">

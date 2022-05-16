@@ -105,13 +105,13 @@ canvas#canvas {
     letter-spacing: 1.7rem;
 }
 
-.background_repeat {
+/* .background_repeat {
     background-image: url(../public/Images/background.svg);
     background-repeat: repeat;
     background-position: right top;
     background-size: 20px, 20px;
     mix-blend-mode: overlay;
-}
+} */
 
 /* .background_gradient {
     transform: translate3d(0%, 0%, 0px);
