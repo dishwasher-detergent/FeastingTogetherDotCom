@@ -23,7 +23,7 @@ export default function Home() {
                 </Link>
             </div>
           </div>
-          {/* <Example /> */}
+          <Example />
         </section>
         <div className="z-10 inset-0 absolute background_gradient"></div>
       </main>
