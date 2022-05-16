@@ -82,9 +82,20 @@ canvas#canvas {
     --gradient-color-4: #91556c;
 }
 
+.nav_logo {
+    background-image: url(../public/Branding/Logo.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 @media (prefers-color-scheme: dark) {
     .button.ghost {
         @apply text-primary-50;
+    }
+
+    .nav_logo {
+        background-image: url(../public/Branding/Logo_Light.png);
     }
 }
 
