@@ -116,7 +116,7 @@ const Define = ({childFunc, loading = null}) =>
 
 	return (
 		<CardContent>
-			<div className='relative w-full h-full bg-slate-1000 border border-slate-900 rounded-lg overflow-hidden'>
+			<div className='relative w-full h-full bg-slate-1000 border border-slate-800 rounded-lg overflow-hidden'>
 				<div className='w-full h-full aboslute inset-0' ref={mapContainer}></div>
 			</div>
 			<div className='w-full flex flex-col'>
