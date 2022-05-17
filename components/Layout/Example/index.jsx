@@ -24,7 +24,7 @@ const Example = () => {
 
 	return (
 		<div className="flex-none relative card w-full max-w-[30rem] h-[44rem] shadow-lg overflow-hidden dark:bg-slate-900 dark:border-slate-800 dark:text-white">
-			<div ref={create} className="flex flex-col w-full h-full absolute z-50 bg-white dark:bg-slate-900">
+			<div ref={create} className="overflow-hidden rounded-lg flex flex-col w-full h-full absolute z-50 bg-white dark:bg-slate-900">
 				<Create />
 				<div className='w-full flex items-center justify-end gap-2 p-4'>
 					<button className="button">
@@ -35,7 +35,7 @@ const Example = () => {
 					</button>
 				</div>
 			</div>
-			<div ref={define} className="flex flex-col w-full h-full absolute z-40 bg-white dark:bg-slate-900">
+			<div ref={define} className="overflow-hidden rounded-lg flex flex-col w-full h-full absolute z-40 bg-white dark:bg-slate-900">
 				<Define />
 				<div className='w-full flex items-center justify-end gap-2 p-4'>
 					<button className='button'>
@@ -46,7 +46,7 @@ const Example = () => {
 					</button>
 				</div>
 			</div>
-			<div ref={waiting} className="flex flex-col w-full h-full absolute z-30 bg-white dark:bg-slate-900">
+			<div ref={waiting} className="overflow-hidden rounded-lg flex flex-col w-full h-full absolute z-30 bg-white dark:bg-slate-900">
 				<Waiting />
 				<div className='w-full flex items-center justify-end gap-2 p-4'>
 					<button className='button ghost'>
