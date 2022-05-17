@@ -133,9 +133,9 @@ const Feast = () =>
 
 	return (
 		<FeastingLayout>
-			<div className='card max-w-full h-full w-[30rem] md:h-[44rem] shadow-lg dark:bg-slate-1000 dark:border-slate-900 dark:text-white'>
+			<div className='card max-w-full h-full w-[30rem] md:h-[44rem] shadow-lg dark:bg-slate-900 dark:border-slate-800 dark:text-white'>
 				<CardContent>
-					<div className='relative w-full h-full bg-slate-1000 border border-slate-900 rounded-lg '>
+					<div className='relative w-full h-full bg-slate-1000 border border-slate-800 rounded-lg '>
 						{results ? <>
 							<div className='w-full h-full rounded-lg overflow-hidden'>
 								<img className='h-full w-full object-center object-cover' src={results[position].image_url} />
