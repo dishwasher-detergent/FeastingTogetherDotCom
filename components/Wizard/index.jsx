@@ -53,7 +53,7 @@ const Wizard = ({ children, childFunc }) =>
 				<meta property="og:image" content="/Branding/Meta.png" />
 				<meta property="twitter:image" content="/Branding/Meta.png" />
 			</Head>
-			<div className='card max-w-full w-[30rem] h-full max-h-[44rem] shadow-lg dark:bg-slate-900 dark:border-slate-900 dark:text-white'>
+			<div className='card max-w-full w-[30rem] h-full max-h-[44rem] shadow-lg dark:bg-slate-900 dark:border-slate-800 dark:text-white'>
 				<div className='w-full h-full' ref={wizard}>
 					{stages[stageIndex]}
 				</div>
