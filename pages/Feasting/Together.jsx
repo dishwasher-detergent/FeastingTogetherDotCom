@@ -158,10 +158,10 @@ const Feast = () =>
 								</div>
 							</div>
 							<div className='absolute w-full h-10 -bottom-5 flex items-center justify-center'>
-								{finished ? <p className='warning text-2xl font-semibold badge succes'>
+								{finished ? <p className='warning border border-warning-800 text-2xl font-semibold badge succes'>
 									🧇 Time To Eat! 🍕
 								</p>
-								: <p className='bg-slate-900 text-white font-semibold px-8 badge succes'>Invite Code: {session.session_id}</p>}
+									: <p className='bg-slate-900 border border-slate-800 text-white font-semibold px-8 badge succes'>Invite Code: {session.session_id}</p>}
 							</div>
 						</> : <Loading />}
 					</div>
