@@ -133,7 +133,7 @@ const Feast = () =>
 
 	return (
 		<FeastingLayout>
-			<div className='card max-w-full h-full w-[30rem] md:h-[44rem] shadow-lg dark:bg-slate-900 dark:border-slate-800 dark:text-white'>
+			<div className='card max-w-full w-[30rem] h-full max-h-[44rem] shadow-lg dark:bg-slate-900 dark:border-slate-800 dark:text-white'>
 				<CardContent>
 					<div className='relative w-full h-full bg-slate-1000 border border-slate-800 rounded-lg '>
 						{results ? <>
