@@ -20,6 +20,10 @@ const Wizard = ({ children, childFunc = null }) =>
 		}
 	}, []);
 
+	useEffect(() => {
+		if(session.session_id) setStageIndex(1)
+	}, [session]);
+
 	const nextClick = async () =>
 	{
 		setLoading(true)

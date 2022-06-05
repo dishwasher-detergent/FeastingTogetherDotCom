@@ -97,12 +97,12 @@ const CreateHome = () =>
 			initial={{x: "-20%"}}
 			animate={{x: 0}}
 			exit={{x: "20%"}}
-			className='relative w-full max-w-5xl flex flex-col md:flex-row md:items-end gap-2 p-4 overflow-hidden bg-white border border-slate-300 rounded-lg shadow-lg'>
+			className='relative w-full max-w-2xl flex flex-col md:flex-row md:items-end gap-6 p-4 overflow-hidden bg-white border border-slate-300 rounded-lg shadow-lg dark:bg-slate-900 dark:border-slate-800 dark:text-white'>
             <div className='flex flex-col flex-1'>
                 <label className='pl-2 pb-1 block text-sm font-bold'>Name</label>
                 <input maxLength={16} required className="input lg w-full" placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} />
             </div>
-            <div className='flex-none pt-8 md:pt-0'>
+            <div className='flex-none'>
                 <button onClick={CreateSession} className="button lg w-full md:w-auto">Create Your Own Feast</button>
             </div>
 			<motion.div

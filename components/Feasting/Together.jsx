@@ -48,9 +48,8 @@ const Feast = ({ childFunc, loading = null }) =>
 				setLat(resp.data[0].location[0])
 				setLng(resp.data[0].location[1])
 				
-				let price = resp.data[0].price.replace('[','')
-				price = price.replace(']','')
-				setPrice(price)
+				let price = JSON.parse(resp.data[0].price)
+				setPrice(price.join(','))
 			})
 	},[]);
 

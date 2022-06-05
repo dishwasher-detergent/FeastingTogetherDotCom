@@ -16,7 +16,7 @@ const Define = ({childFunc, loading = null}) =>
 	const sessionLocation = useSelector((state) => state.location)
 	const session = useSelector((state) => state.session)
 	const connection = useSelector((state) => state.connection)
-	const [price, setPrice] = useState([1]);
+	const [price, setPrice] = useState(sessionPrice ? JSON.stringify(sessionPrice) : [1]);
 
 	const mapContainer = useRef(null);
 	const map = useRef(null);
@@ -53,7 +53,6 @@ const Define = ({childFunc, loading = null}) =>
 	}, []);
 
 	const setLngLat = (e) => {
-		console.log(e)
 		if(e) {
 			setLng(Number(e.result.center[0].toFixed(2)));
 			setLat(Number(e.result.center[1].toFixed(2)));
@@ -72,7 +71,6 @@ const Define = ({childFunc, loading = null}) =>
 
 	const SetDetails = async () =>
 	{	
-		console.log(price)
 		if(!lat || !lng || !price) return false;
 
 		const details = await connection
@@ -118,10 +116,12 @@ const Define = ({childFunc, loading = null}) =>
 	// location
 	useEffect(() =>
 	{
-		childFunc.current = SetDetails
 		dispatch(setSessionLocation({lat: lat, lng: lng, zoom: zoom}))
 	}, [lat, lng, zoom])
 
+	useEffect(() => {
+		childFunc.current = SetDetails
+	},[lat,lng,zoom,price])
 
 	return (
 		<CardContent>

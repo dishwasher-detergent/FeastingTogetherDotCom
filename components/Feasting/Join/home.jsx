@@ -80,7 +80,7 @@ const JoinHome = ({ image }) =>
 			initial={{x: "-20%"}}
 			animate={{x: 0}}
 			exit={{x: "20%"}}
-			className='relative w-full max-w-5xl flex flex-col md:flex-row md:items-end gap-2 p-4 overflow-hidden bg-white border border-slate-300 rounded-lg shadow-lg'>
+			className='relative w-full max-w-2xl flex flex-col md:flex-row md:items-end gap-6 p-4 overflow-hidden bg-white border border-slate-300 rounded-lg shadow-lg dark:bg-slate-900 dark:border-slate-800 dark:text-white'>
             <div className='w-full'>
                 <label className='pl-2 pb-1 block text-sm font-bold'>Name</label>
                 <input maxLength={16} required className="input lg w-full" placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} />
@@ -89,17 +89,17 @@ const JoinHome = ({ image }) =>
                 <label className='pl-2 pb-1 block text-sm font-bold'>Session ID</label>
                 <div className='w-full h-12 flex items-center justify-center relative'>
                     <div className='h-full w-full grid grid-cols-6 gap-2'>
-                        <div className='flex items-center justify-center text-4xl font-bold bg-slate-50 border border-slate-300 rounded-lg dark:bg-slate-800 dark:border-slate-900'>{sessionID[0] ? sessionID[0] : '0'}</div>
-                        <div className='flex items-center justify-center text-4xl font-bold bg-slate-50 border border-slate-300 rounded-lg dark:bg-slate-800 dark:border-slate-900'>{sessionID[1] ? sessionID[1] : '0'}</div>
-                        <div className='flex items-center justify-center text-4xl font-bold bg-slate-50 border border-slate-300 rounded-lg dark:bg-slate-800 dark:border-slate-900'>{sessionID[2] ? sessionID[2] : '0'}</div>
-                        <div className='flex items-center justify-center text-4xl font-bold bg-slate-50 border border-slate-300 rounded-lg dark:bg-slate-800 dark:border-slate-900'>{sessionID[3] ? sessionID[3] : '0'}</div>
-                        <div className='flex items-center justify-center text-4xl font-bold bg-slate-50 border border-slate-300 rounded-lg dark:bg-slate-800 dark:border-slate-900'>{sessionID[4] ? sessionID[4] : '0'}</div>
-                        <div className='flex items-center justify-center text-4xl font-bold bg-slate-50 border border-slate-300 rounded-lg dark:bg-slate-800 dark:border-slate-900'>{sessionID[5] ? sessionID[5] : '0'}</div>
+                        <div className='flex items-center justify-center text-3xl font-bold bg-slate-50 border border-slate-300 rounded-lg dark:bg-slate-800 dark:border-slate-900'>{sessionID[0] ? sessionID[0] : '0'}</div>
+                        <div className='flex items-center justify-center text-3xl font-bold bg-slate-50 border border-slate-300 rounded-lg dark:bg-slate-800 dark:border-slate-900'>{sessionID[1] ? sessionID[1] : '0'}</div>
+                        <div className='flex items-center justify-center text-3xl font-bold bg-slate-50 border border-slate-300 rounded-lg dark:bg-slate-800 dark:border-slate-900'>{sessionID[2] ? sessionID[2] : '0'}</div>
+                        <div className='flex items-center justify-center text-3xl font-bold bg-slate-50 border border-slate-300 rounded-lg dark:bg-slate-800 dark:border-slate-900'>{sessionID[3] ? sessionID[3] : '0'}</div>
+                        <div className='flex items-center justify-center text-3xl font-bold bg-slate-50 border border-slate-300 rounded-lg dark:bg-slate-800 dark:border-slate-900'>{sessionID[4] ? sessionID[4] : '0'}</div>
+                        <div className='flex items-center justify-center text-3xl font-bold bg-slate-50 border border-slate-300 rounded-lg dark:bg-slate-800 dark:border-slate-900'>{sessionID[5] ? sessionID[5] : '0'}</div>
                     </div>
                     <input maxLength={6} required className="absolute h-full w-full px-2.5 bg-transparent border-none text-transparent" value={sessionID} onChange={(e) => setSessionID(e.target.value.toUpperCase())} />
                 </div>
             </div>
-            <div className='flex-none pt-8 md:pt-0'>
+            <div className='flex-none'>
                 <button onClick={startSession} className="button lg w-full md:w-auto">Join Your Buddies</button>
             </div>
 			<motion.div

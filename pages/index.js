@@ -32,7 +32,7 @@ export default function Home() {
                 <input onChange={() => setCheck(!check)} type='checkbox' className="toggle xl" />
                 <p className="font-bold">Join</p>
               </div>
-              <div>
+              <div className="w-full flex items-center justify-center">
               {check ? <CreateHome /> : <JoinHome />}
               </div>
             </div>
