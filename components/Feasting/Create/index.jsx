@@ -1,10 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react';
-import { setSessionName } from '../../store'
-import CardContent from '../../components/Card';
+import { setSessionName } from '../../../store'
+import CardContent from '../../../components/Card';
 import { useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js'
-import { setSession } from '../../store'
+import { setSession } from '../../../store'
 
 const Create = ({ childFunc, loading = null }) =>
 {

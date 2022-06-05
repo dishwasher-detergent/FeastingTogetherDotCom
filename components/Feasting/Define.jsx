@@ -52,18 +52,27 @@ const Define = ({childFunc, loading = null}) =>
 		document.getElementById('geocoder').appendChild(geocoder.current.onAdd(map.current))
 	}, []);
 
+	const setLngLat = (e) => {
+		console.log(e)
+		if(e) {
+			setLng(Number(e.result.center[0].toFixed(2)));
+			setLat(Number(e.result.center[1].toFixed(2)));
+		}
+	}
+
 	useEffect(() =>
 	{
 		if(!geocoder.current) return;
-		geocoder.current.on('result', (e) =>
-		{
-			setLng(Number(e.result.center[0].toFixed(2)));
-			setLat(Number(e.result.center[1].toFixed(2)));
-		});
+		geocoder.current.on('result', setLngLat)
+
+		return () => {
+			geocoder.current.off('result', setLngLat)
+		}
 	});
 
 	const SetDetails = async () =>
 	{	
+		console.log(price)
 		if(!lat || !lng || !price) return false;
 
 		const details = await connection
@@ -87,7 +96,7 @@ const Define = ({childFunc, loading = null}) =>
 		{
 			if (!price.includes(Number(event.target.value)))
 			{
-				setPrice([...price, Number(event.target.value)])
+				setPrice(prev => [...prev, Number(event.target.value)])
 			}
 		} else
 		{
