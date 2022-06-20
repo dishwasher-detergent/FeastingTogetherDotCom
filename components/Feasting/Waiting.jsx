@@ -12,8 +12,6 @@ const Waiting = ({ childFunc, loading = null }) =>
 	const session = useSelector((state) => state.session)
 	const [participants, setParticipants] = useState([]);
 	const [copy, setCopy] = useState(false);
-	const [RTSConn, setRTSConn] = useState(false);
-	const [RTPTConn, setRTPTConn] = useState(false);
 	const router = useRouter()
 
 	useEffect(() =>
@@ -28,11 +26,6 @@ const Waiting = ({ childFunc, loading = null }) =>
 					router.push("/Feasting/Join")
 					return
 				}
-				// if (resp.data[0].started)
-				// {
-				// 	router.push("/Feasting/Together")
-				// 	return
-				// }
 			})
 	}, [])
 
@@ -45,20 +38,6 @@ const Waiting = ({ childFunc, loading = null }) =>
 				FetchParticipants()
 			})
 			.subscribe()
-
-		setRTPTConn(PTConn)
-
-		const SConn = connection.from('session:session_id=eq.' + session.session_id)
-			.on('*', payload =>
-			{
-				if (payload.new.started)
-				{
-					connection.removeAllSubscriptions()
-				}
-			})
-			.subscribe()
-
-		setRTSConn(SConn)
 	}, [])
 
 	useEffect(() =>

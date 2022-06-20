@@ -8,20 +8,19 @@ import Head from 'next/head';
 const Wizard = ({ children, childFunc = null }) =>
 {
 	const session = useSelector((state) => state.session)
+	const connection = useSelector((state) => state.connection)
 	const [stageIndex, setStageIndex] = useState(0)
 	const [stages] = useState(React.Children.toArray(children))
 	const wizard = createRef();
 	const router = useRouter()
 	const [loading, setLoading] = useState(false)
 
-	useEffect(() => { 
-		if(router.query.stage == "Waiting") {
-			setStageIndex(stages.length - 2)
-		}
-	}, []);
-
 	useEffect(() => {
-		if(session.session_id) setStageIndex(1)
+		if(session.session_id && session.creator == true) {
+			setStageIndex(1)
+		} else {
+			setStageIndex(2)
+		}
 	}, [session]);
 
 	const nextClick = async () =>
@@ -43,6 +42,19 @@ const Wizard = ({ children, childFunc = null }) =>
 			setStageIndex(prev => (prev - 1));
 		}
 	};
+
+	useEffect(() => {
+		connection.from('session:session_id=eq.' + session.session_id)
+		.on('*', payload =>
+		{
+			if (payload.new.started)
+			{
+				connection.removeAllSubscriptions()
+				setStageIndex(stages.length - 1)
+			}
+		})
+		.subscribe()
+	}, []);
 
 	return (
 		<FeastingLayout>
